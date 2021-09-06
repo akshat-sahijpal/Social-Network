@@ -3,9 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Projects/AndroidProjects/Crud/app/src/main/res/drawable/ic_baseline_trending_up_24.xml" value="0.1609375" />
+        <entry key="..\:/Projects/AndroidProjects/Crud/app/src/main/res/drawable/post_image_border.xml" value="0.1609375" />
+        <entry key="..\:/Projects/AndroidProjects/Crud/app/src/main/res/font/acme.xml" value="0.10277777777777777" />
         <entry key="..\:/Projects/AndroidProjects/Crud/app/src/main/res/layout/activity_main.xml" value="0.14479166666666668" />
-        <entry key="..\:/Projects/AndroidProjects/Crud/app/src/main/res/layout/fragment_home_feed.xml" value="0.14479166666666668" />
+        <entry key="..\:/Projects/AndroidProjects/Crud/app/src/main/res/layout/fragment_home_feed.xml" value="0.264" />
         <entry key="..\:/Projects/AndroidProjects/Crud/app/src/main/res/layout/personal_feed_fragment.xml" value="0.14479166666666668" />
+        <entry key="..\:/Projects/AndroidProjects/Crud/app/src/main/res/layout/post_architecture.xml" value="0.2" />
       </map>
     </option>
   </component>
