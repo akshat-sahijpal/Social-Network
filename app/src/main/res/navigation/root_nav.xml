@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_nav">
+    <fragment
+        android:name="com.akshatsahijpal.crud.ui.fragments.HomeFeedFragment"
+        android:id="@+id/homeFragment"
+        tools:layout="@layout/fragment_home_feed">
+
+    </fragment>
+</navigation>
