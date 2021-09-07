@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.PostCreationFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <ImageButton
+            android:id="@+id/closeWindowButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+             android:layout_marginStart="20dp"
+            android:layout_gravity="start"
+            android:src="@drawable/ic_baseline_close_24"
+            android:background="@color/white"
+            />
+<Space
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="2"
+    />
+        <Button
+            android:id="@+id/postButton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:padding="5dp"
+            android:layout_marginEnd="20dp"
+            android:layout_gravity="center_horizontal"
+            android:text="POST"/>
+    </LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/profilePicture"
+        android:layout_width="96dp"
+        android:layout_height="80dp"
+        android:padding="2dp"
+        android:layout_marginStart="5dp"
+        android:src="@drawable/default_profile_picture"
+        app:civ_border_color="#FF000000"
+        app:civ_border_width="2dp" />
+    <EditText
+        android:id="@+id/mainPara"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="What's Up?"
+        android:gravity="start"
+        android:layout_marginEnd="30dp"
+        />
+</LinearLayout>
+</LinearLayout>

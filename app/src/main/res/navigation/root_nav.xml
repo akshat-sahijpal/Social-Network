@@ -8,5 +8,14 @@
         android:id="@+id/homeFeedFragment"
         android:name="com.akshatsahijpal.crud.ui.fragments.HomeFeedFragment"
         android:label="fragment_home_feed"
-        tools:layout="@layout/fragment_home_feed" />
+        tools:layout="@layout/fragment_home_feed" >
+        <action
+            android:id="@+id/action_homeFeedFragment_to_postCreationFragment"
+            app:destination="@id/postCreationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/postCreationFragment"
+        android:name="com.akshatsahijpal.crud.ui.fragments.PostCreationFragment"
+        android:label="post_creation_fragment"
+        tools:layout="@layout/post_creation_fragment" />
 </navigation>
