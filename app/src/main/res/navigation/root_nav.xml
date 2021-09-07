@@ -2,11 +2,11 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/root_nav">
+    android:id="@+id/root_nav"
+    app:startDestination="@id/homeFeedFragment">
     <fragment
+        android:id="@+id/homeFeedFragment"
         android:name="com.akshatsahijpal.crud.ui.fragments.HomeFeedFragment"
-        android:id="@+id/homeFragment"
-        tools:layout="@layout/fragment_home_feed">
-
-    </fragment>
+        android:label="fragment_home_feed"
+        tools:layout="@layout/fragment_home_feed" />
 </navigation>

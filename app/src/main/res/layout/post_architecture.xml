@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
     <View
         android:layout_width="match_parent"
@@ -23,16 +23,20 @@
             android:layout_width="96dp"
             android:layout_height="80dp"
             android:padding="2dp"
+            android:layout_marginStart="5dp"
             android:src="@drawable/default_profile_picture"
             app:civ_border_color="#FF000000"
             app:civ_border_width="2dp" />
-
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
         <TextView
             android:id="@+id/profileName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/amaranth_bold"
-            android:padding="5dp"
+            android:padding="2dp"
             android:text="Profile Name"
             android:textColor="@color/black"
             android:textSize="20sp"
@@ -40,13 +44,13 @@
 
         <TextView
             android:id="@+id/profileUserName"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ellipsize="marquee"
             android:maxLines="1"
             android:padding="5dp"
             android:text="@string/profile_name"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/uploadTime"
@@ -55,8 +59,9 @@
             android:ellipsize="marquee"
             android:maxLines="1"
             android:padding="5dp"
-            android:text="1H"
-            android:textSize="20sp" />
+            android:text="1h"
+            android:textSize="17sp" />
+</LinearLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -72,9 +77,9 @@
             android:layout_marginEnd="20dp"
             android:fontFamily="@font/acme"
             android:padding="10dp"
+            android:textColor="@color/black"
             android:text="@string/five_centuries"
-            android:textFontWeight="600"
-            android:textSize="25sp" />
+             android:textSize="15sp" />
         <com.google.android.material.card.MaterialCardView
             android:layout_width="wrap_content"
             android:layout_marginTop="10dp"

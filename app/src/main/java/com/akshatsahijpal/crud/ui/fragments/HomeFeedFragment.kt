@@ -18,19 +18,19 @@ class HomeFeedFragment : Fragment() {
         PostFeedData("akshat2001",
             "Akshat", "2h", null,
         "This is my first post", null, 10, 12, 30),
-        PostFeedData("aks2001",
+        PostFeedData("@aks2001",
             "Akat", "26h", null,
             "This is my Second post", null, 10, 12, 30),
-        PostFeedData("at2001",
+        PostFeedData("@at2001",
             "hat", "2h", null,
             "This is my third post", null, 10, 12, 30),
-        PostFeedData("akshat2001",
+        PostFeedData("@akshat2001",
             "Akshat", "2h", null,
-            "This is my first post", null, 10, 12, 30),
-        PostFeedData("aks2001",
+            "Lorem Ipsumhas been the ind since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries", null, 10, 12, 30),
+        PostFeedData("@aks2001",
             "Akat", "26h", null,
             "This is my Second post", null, 10, 12, 30),
-        PostFeedData("at2001",
+        PostFeedData("@at2001",
             "hat", "2h", null,
             "This is my third post", null, 10, 12, 30),
 
@@ -47,9 +47,9 @@ class HomeFeedFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        /*_binding.apply {
+        _binding.apply {
             mainFeedRecycler.adapter = adapter
             mainFeedRecycler.layoutManager = LinearLayoutManager(requireContext())
-        }*/
+        }
     }
 }
