@@ -11,7 +11,8 @@
         tools:layout="@layout/fragment_home_feed" >
         <action
             android:id="@+id/action_homeFeedFragment_to_postCreationFragment"
-            app:destination="@id/postCreationFragment" />
+            app:destination="@id/postCreationFragment"
+            app:popUpTo="@id/postCreationFragment" />
     </fragment>
     <fragment
         android:id="@+id/postCreationFragment"

@@ -39,6 +39,7 @@
     </LinearLayout>
 <LinearLayout
     android:layout_width="match_parent"
+    android:layout_marginTop="30dp"
     android:layout_height="match_parent">
     <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/profilePicture"
@@ -53,8 +54,9 @@
         android:id="@+id/mainPara"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="What's Up?"
+        android:hint="@string/question"
         android:gravity="start"
+        android:fontFamily="@font/amiko_semibold"
         android:layout_marginEnd="30dp"
         />
 </LinearLayout>
