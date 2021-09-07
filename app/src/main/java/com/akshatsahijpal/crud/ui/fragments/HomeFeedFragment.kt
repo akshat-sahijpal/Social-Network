@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -15,7 +16,7 @@ import com.akshatsahijpal.crud.databinding.FragmentHomeFeedBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFeedFragment : Fragment() {
+class HomeFeedFragment : Fragment(), HomeFeedRecyclerViewAdapter.ItemClickListener {
     private lateinit var _binding: FragmentHomeFeedBinding
     private lateinit var navController: NavController
     private var x = listOf(
@@ -38,7 +39,7 @@ class HomeFeedFragment : Fragment() {
             "Lorem Ipsumhas", "2h", null,
             "This is my third post", null, 10, 12, 30),
         )
-    private var adapter = HomeFeedRecyclerViewAdapter(x)
+    private var adapter = HomeFeedRecyclerViewAdapter(x, this)
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -58,5 +59,10 @@ class HomeFeedFragment : Fragment() {
                navController.navigate(R.id.action_homeFeedFragment_to_postCreationFragment)
             }
         }
+    }
+
+    override fun onItemClicked(position: Int) {
+        Toast.makeText(requireContext(), "for $position", Toast.LENGTH_LONG).show();
+        navController.navigate(R.id.action_homeFeedFragment_to_expandedPostFragment)
     }
 }

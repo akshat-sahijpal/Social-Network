@@ -55,6 +55,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:hint="@string/question"
+        android:background="@null"
         android:gravity="start"
         android:fontFamily="@font/amiko_semibold"
         android:layout_marginEnd="30dp"

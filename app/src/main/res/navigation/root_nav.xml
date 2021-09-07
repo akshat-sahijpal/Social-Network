@@ -13,10 +13,18 @@
             android:id="@+id/action_homeFeedFragment_to_postCreationFragment"
             app:destination="@id/postCreationFragment"
             app:popUpTo="@id/postCreationFragment" />
+        <action
+            android:id="@+id/action_homeFeedFragment_to_expandedPostFragment"
+            app:destination="@id/expandedPostFragment" />
     </fragment>
     <fragment
         android:id="@+id/postCreationFragment"
         android:name="com.akshatsahijpal.crud.ui.fragments.PostCreationFragment"
         android:label="post_creation_fragment"
         tools:layout="@layout/post_creation_fragment" />
+    <fragment
+        android:id="@+id/expandedPostFragment"
+        android:name="com.akshatsahijpal.crud.ui.fragments.ExpandedPostFragment"
+        android:label="expanded_post_fragment"
+        tools:layout="@layout/expanded_post_fragment" />
 </navigation>

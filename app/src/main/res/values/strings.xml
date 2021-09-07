@@ -5,4 +5,6 @@
     <string name="profile_name"><b> @profile_name</b></string>
     <string name="five_centuries">Lorem Ipsumhas been the ind since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</string>
     <string name="question">What is your question?</string>
+    <string name="dwe">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin hendrerit vel sapien sit amet molestie. In nec orci ut augue condimentum egestas. Vivamus lacinia luctus tempus. Nulla iaculis egestas augue. Donec venenatis odio velit, eu tempus lorem vehicula nec. Etiam sed nisl nec dui mollis pulvinar. Donec ut condimentum augue. Integer nec urna consectetur, dictum enim ac, tincidunt diam.</string>
+    <string name="_1h">1h</string>
 </resources>
