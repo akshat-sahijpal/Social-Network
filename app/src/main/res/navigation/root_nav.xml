@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_homeFeedFragment_to_expandedPostFragment"
             app:destination="@id/expandedPostFragment" />
+        <action
+            android:id="@+id/action_homeFeedFragment_to_profilePageFragment"
+            app:destination="@id/profilePageFragment" />
     </fragment>
     <fragment
         android:id="@+id/postCreationFragment"
@@ -27,4 +30,9 @@
         android:name="com.akshatsahijpal.crud.ui.fragments.ExpandedPostFragment"
         android:label="expanded_post_fragment"
         tools:layout="@layout/expanded_post_fragment" />
+    <fragment
+        android:id="@+id/profilePageFragment"
+        android:name="com.akshatsahijpal.crud.ui.fragments.ProfilePageFragment"
+        android:label="fragment_profile_page"
+        tools:layout="@layout/fragment_profile_page" />
 </navigation>

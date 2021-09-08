@@ -3,7 +3,11 @@ package com.akshatsahijpal.crud.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.cardview.widget.CardView
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.akshatsahijpal.crud.R
 import com.akshatsahijpal.crud.data.PostFeedData
 import com.akshatsahijpal.crud.databinding.PostArchitectureBinding
 
@@ -12,7 +16,8 @@ class HomeFeedRecyclerViewAdapter constructor(
     itemClk: ItemClickListener,
 ) :  RecyclerView.Adapter<HomeFeedRecyclerViewAdapter.Holder>() {
     private var itemClick: ItemClickListener = itemClk
-    class Holder(private var _bind: PostArchitectureBinding,
+    private lateinit var navController: NavController
+    inner class Holder(private var _bind: PostArchitectureBinding,
     var itemClick: ItemClickListener) :
         RecyclerView.ViewHolder(_bind.root), View.OnClickListener {
         init {
@@ -24,6 +29,9 @@ class HomeFeedRecyclerViewAdapter constructor(
                 it.profileName.text = post.postProfileName
                 it.uploadTime.text = post.postUploadTime
                 it.mainPostParagraph.text = post.postMainParagraph
+                it.profilePicture.setOnClickListener {
+                    toProfile(post, _bind.root)
+                }
             }
         }
         override fun onClick(p0: View?) {
@@ -44,8 +52,10 @@ class HomeFeedRecyclerViewAdapter constructor(
         val post: PostFeedData = demo[position]
         holder.connect(post)
     }
-
-
+    private fun toProfile(post: PostFeedData, root: CardView) {
+        navController = Navigation.findNavController(root)
+        navController.navigate(R.id.action_homeFeedFragment_to_profilePageFragment)
+    }
     override fun getItemCount(): Int {
         return demo.size
     }
