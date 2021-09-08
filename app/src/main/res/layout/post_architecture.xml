@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:elevation="40dp"
+    app:cardCornerRadius="30dp"
+    android:layout_marginStart="40dp"
+    android:layout_marginEnd="40dp"
+    android:layout_marginTop="10dp"
     android:layout_height="wrap_content"
     android:orientation="vertical">
-    <View
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="0dp"
-        android:background="@android:color/darker_gray" />
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
@@ -23,7 +27,7 @@
             android:layout_width="96dp"
             android:layout_height="80dp"
             android:padding="2dp"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="13dp"
             android:src="@drawable/default_profile_picture"
             app:civ_border_color="#FF000000"
             app:civ_border_width="2dp" />
@@ -40,7 +44,7 @@
             android:padding="2dp"
             android:text="Profile Name"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="17sp"
             android:textStyle="bold" />
 
         <TextView
@@ -49,8 +53,9 @@
             android:layout_height="wrap_content"
             android:ellipsize="marquee"
             android:maxLines="1"
+            android:textColor="@color/tag_color"
             android:text="@string/profile_name"
-            android:textSize="18sp" />
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/uploadTime"
@@ -59,7 +64,7 @@
             android:ellipsize="marquee"
             android:maxLines="1"
             android:text="1h"
-            android:textSize="17sp" />
+            android:textSize="14sp" />
 </LinearLayout>
     </LinearLayout>
 
@@ -78,7 +83,7 @@
             android:padding="10dp"
             android:textColor="@color/black"
             android:text="@string/five_centuries"
-             android:textSize="15sp" />
+             android:textSize="22sp" />
         <com.google.android.material.card.MaterialCardView
             android:layout_width="wrap_content"
             android:layout_marginTop="10dp"
@@ -103,11 +108,11 @@
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:layout_height="wrap_content">
+            android:layout_height="0dp">
         <ImageButton
             android:id="@+id/likeButton"
             android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
@@ -115,12 +120,34 @@
             android:src="@drawable/ic_baseline_favorite_border_24"
             android:background="@color/white"
             />
-        <ImageButton
+            <ImageButton
+                android:id="@+id/voiceRecordingButton"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/ic_baseline_keyboard_voice_24"
+                android:background="@color/white"
+                />
+            <ImageButton
+                android:id="@+id/voidLiveTalkButton"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/ic_baseline_record_voice_over_24"
+                android:background="@color/white"
+                />
+            <ImageButton
             android:id="@+id/commentButton"
             android:layout_width="50dp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginStart="20dp"
             android:src="@drawable/ic_baseline_add_comment_24"
@@ -139,9 +166,5 @@
             />
         </LinearLayout>
     </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="5dp"
-        android:background="@android:color/darker_gray" />
-</LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

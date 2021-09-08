@@ -43,6 +43,7 @@ class ExpandedPostFragment : Fragment() {
         _binding.apply {
             CommentRecyclerView.adapter = adapter
             CommentRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+            CommentRecyclerView.isNestedScrollingEnabled = false
         }
     }
 }
