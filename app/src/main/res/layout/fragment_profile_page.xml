@@ -110,6 +110,27 @@
                android:textSize="16sp"
                />
        </LinearLayout>
+      <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+
+          <com.google.android.material.tabs.TabLayout
+              android:id="@+id/tabLayoutForProfile"
+              android:layout_width="match_parent"
+              android:layout_height="55sp" />
+
+          <androidx.viewpager2.widget.ViewPager2
+              android:id="@+id/viewPagerForProfile"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_below="@+id/tabLayoutForProfile"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintHorizontal_bias="0.5"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toTopOf="parent" />
+
+      </RelativeLayout>
     </LinearLayout>
 
     <Button
