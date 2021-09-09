@@ -6,7 +6,7 @@
     app:startDestination="@id/homeFeedFragment">
     <fragment
         android:id="@+id/homeFeedFragment"
-        android:name="com.akshatsahijpal.crud.ui.fragments.HomeFeedFragment"
+        android:name="com.akshatsahijpal.crud.ui.fragments.home.HomeFeedFragment"
         android:label="fragment_home_feed"
         tools:layout="@layout/fragment_home_feed" >
         <action
@@ -22,17 +22,21 @@
     </fragment>
     <fragment
         android:id="@+id/postCreationFragment"
-        android:name="com.akshatsahijpal.crud.ui.fragments.PostCreationFragment"
+        android:name="com.akshatsahijpal.crud.ui.fragments.post.PostCreationFragment"
         android:label="post_creation_fragment"
         tools:layout="@layout/post_creation_fragment" />
     <fragment
         android:id="@+id/expandedPostFragment"
-        android:name="com.akshatsahijpal.crud.ui.fragments.ExpandedPostFragment"
+        android:name="com.akshatsahijpal.crud.ui.fragments.post.ExpandedPostFragment"
         android:label="expanded_post_fragment"
-        tools:layout="@layout/expanded_post_fragment" />
+        tools:layout="@layout/expanded_post_fragment" >
+        <action
+            android:id="@+id/action_expandedPostFragment_to_profilePageFragment"
+            app:destination="@id/profilePageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profilePageFragment"
-        android:name="com.akshatsahijpal.crud.ui.fragments.ProfilePageFragment"
+        android:name="com.akshatsahijpal.crud.ui.fragments.profile.ProfilePageFragment"
         android:label="fragment_profile_page"
         tools:layout="@layout/fragment_profile_page" />
 </navigation>

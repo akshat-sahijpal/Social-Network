@@ -1,4 +1,4 @@
-package com.akshatsahijpal.crud.ui.fragments
+package com.akshatsahijpal.crud.ui.fragments.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater

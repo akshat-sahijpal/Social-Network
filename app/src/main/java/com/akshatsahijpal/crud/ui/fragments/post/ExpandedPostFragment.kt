@@ -1,4 +1,4 @@
-package com.akshatsahijpal.crud.ui.fragments
+package com.akshatsahijpal.crud.ui.fragments.post
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.akshatsahijpal.crud.R
 import com.akshatsahijpal.crud.adapter.CommentRecyclerAdapter
 import com.akshatsahijpal.crud.data.CommentArchitectureData
 import com.akshatsahijpal.crud.databinding.ExpandedPostFragmentBinding
@@ -17,7 +16,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class ExpandedPostFragment : Fragment() {
     private lateinit var _binding: ExpandedPostFragmentBinding
-    private lateinit var navController: NavController
     private var adapter = CommentRecyclerAdapter(listOf(
         CommentArchitectureData("akshat", "Akshat Sahijpal", "2h", "Lorem Ipsumhas been the ind since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It h"),
         CommentArchitectureData("akshat", "Akshat Sahijpal", "2h", "Lorem Ipsumhas been the ind since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It h"),
@@ -39,7 +37,6 @@ class ExpandedPostFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        navController = Navigation.findNavController(view)
         _binding.apply {
             CommentRecyclerView.adapter = adapter
             CommentRecyclerView.layoutManager = LinearLayoutManager(requireContext())

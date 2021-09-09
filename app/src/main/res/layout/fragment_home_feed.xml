@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:background="@color/gray_comment"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.HomeFeedFragment">
+    tools:context=".ui.fragments.home.HomeFeedFragment">
 
 
     <androidx.recyclerview.widget.RecyclerView

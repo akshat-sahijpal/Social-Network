@@ -1,4 +1,4 @@
-package com.akshatsahijpal.crud.ui.vm
+package com.akshatsahijpal.crud.ui.fragments.home
 
 import androidx.lifecycle.ViewModel
 

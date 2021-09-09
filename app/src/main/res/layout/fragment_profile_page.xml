@@ -1,14 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.ProfilePageFragment">
+    tools:context=".ui.fragments.profile.ProfilePageFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ImageView
+        android:id="@+id/profileCoverPhoto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="130dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/coverpicture"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profilePicture"
+        android:layout_width="108dp"
+        android:layout_height="95dp"
+        android:layout_marginTop="92dp"
+        android:padding="2dp"
+        android:src="@drawable/default_profile_picture"
+        app:civ_border_color="#FF000000"
+        app:civ_border_width="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.117"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileCoverPhoto">
+
+        <TextView
+            android:id="@+id/profileNameProfileScreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="45dp"
+            android:fontFamily="@font/amaranth_bold"
+            android:padding="2dp"
+            android:text="Profile Name"
+            android:textColor="@color/black"
+            android:textSize="23sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/profileUserNameProfileScreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="45dp"
+            android:ellipsize="marquee"
+            android:maxLines="1"
+            android:text="@string/profile_name"
+            android:textColor="@color/tag_color"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/profileUserDescriptionProfileScreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="45dp"
+            android:layout_marginEnd="30dp"
+            android:ellipsize="marquee"
+            android:text="@string/description"
+            android:textSize="15sp" />
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:orientation="horizontal"
+           android:layout_marginTop="20dp"
+           android:layout_height="wrap_content">
+           <ImageView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="45dp"
+               android:src="@drawable/ic_baseline_location_on_24"
+               />
+           <TextView
+               android:layout_width="wrap_content"
+               android:id="@+id/locationOnProfile"
+               android:layout_height="wrap_content"
+               android:text="Chandigarh"
+               android:layout_marginStart="5dp"
+               android:textColor="@color/black"
+               android:textStyle="bold"
+               android:textSize="16sp"
+               />
+           <ImageView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="100dp"
+               android:src="@drawable/ic_baseline_people_outline_24"
+               />
+           <TextView
+               android:layout_width="wrap_content"
+               android:id="@+id/connectedPeopleOnProfile"
+               android:layout_height="wrap_content"
+               android:text="20"
+               android:layout_marginStart="5dp"
+               android:textColor="@color/black"
+               android:textStyle="bold"
+               android:textSize="16sp"
+               />
+       </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="15dp"
+        android:text="connect"
+        app:icon="@drawable/ic_baseline_connect_without_contact_24"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.807"
+        app:layout_constraintStart_toEndOf="@+id/profilePicture"
+        app:layout_constraintTop_toBottomOf="@+id/profileCoverPhoto"
+        app:layout_constraintVertical_bias="0.75" />
+</androidx.constraintlayout.widget.ConstraintLayout>
