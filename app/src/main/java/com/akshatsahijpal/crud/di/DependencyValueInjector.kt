@@ -2,6 +2,8 @@ package com.akshatsahijpal.crud.di
 
 import android.content.Context
 import com.akshatsahijpal.crud.repository.login.UserRegisterRepository
+import com.akshatsahijpal.crud.repository.main.HomeScreenRepository
+import com.akshatsahijpal.crud.repository.post.PostCreationRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,4 +18,11 @@ object DependencyValueInjector {
     @Provides
     fun provideRepository(@ApplicationContext cont: Context) = UserRegisterRepository(cont)
 
+    @Singleton
+    @Provides
+    fun providePostCreationRepository() = PostCreationRepository()
+
+    @Singleton
+    @Provides
+    fun provideHomeScreenRepository() = HomeScreenRepository()
 }
