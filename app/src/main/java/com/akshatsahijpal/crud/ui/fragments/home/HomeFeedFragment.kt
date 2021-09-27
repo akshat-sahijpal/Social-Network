@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.akshatsahijpal.crud.R
 import com.akshatsahijpal.crud.adapter.home.PagingAdapter
 import com.akshatsahijpal.crud.databinding.FragmentHomeFeedBinding
@@ -36,15 +37,16 @@ class HomeFeedFragment : Fragment(), PagingAdapter.ItemClickListener {
             var adapter = PagingAdapter(HomeFeedFragment())
             mainFeedRecycler.setHasFixedSize(true)
             mainFeedRecycler.adapter = adapter
+            mainFeedRecycler.layoutManager = LinearLayoutManager(requireContext())
+            postRedirButton.setOnClickListener {
+                navController.navigate(R.id.action_homeFeedFragment_to_postCreationFragment)
+            }
             model.binder.observe(viewLifecycleOwner) {
                 /*Toast.makeText(requireContext(), "Result -> $it", Toast.LENGTH_SHORT).show()
                 if(it!=null) {
                     mainFeedRecycler.adapter = HomeFeedRecyclerViewAdapter(it, HomeFeedFragment())
                     Toast.makeText(requireContext(), "Result -> $it", Toast.LENGTH_SHORT).show()
                     mainFeedRecycler.layoutManager = LinearLayoutManager(requireContext())
-                    postRedirButton.setOnClickListener {
-                        navController.navigate(R.id.action_homeFeedFragment_to_postCreationFragment)
-                    }
                 }*/
                 it.observe(viewLifecycleOwner) {   dt ->
                     adapter.submitData(viewLifecycleOwner.lifecycle, dt)

@@ -14,7 +14,7 @@ class HomeScreenRepository {
     private val db = Firebase.firestore
     fun constructRecycler() =
         Pager(
-            config = PagingConfig(pageSize = 5, maxSize = 10, enablePlaceholders = false),
+            config = PagingConfig(pageSize = 10, maxSize = 30, enablePlaceholders = false),
             pagingSourceFactory = {
                 HomeScreenDataSource()
             }
