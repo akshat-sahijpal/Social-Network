@@ -13,9 +13,8 @@ class HomeScreenRepository {
         return try {
             val snap = db.collection(POST)
                 .get().await()
-            Log.d("Result ->>>>>>>>>>>>", snap.documents.toString())
             snap.documents
-        }catch (e: Exception){
+        } catch (e: Exception) {
             Log.d("Error ->>>>>>>>>>>>", e.toString())
             null
         }
