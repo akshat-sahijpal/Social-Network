@@ -1,4 +1,4 @@
-package com.akshatsahijpal.crud.adapter
+package com.akshatsahijpal.crud.adapter.home
 
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.akshatsahijpal.crud.R
 import com.akshatsahijpal.crud.data.PostFeedData
 import com.akshatsahijpal.crud.databinding.PostArchitectureBinding
+import com.squareup.picasso.Picasso
 
 class HomeFeedRecyclerViewAdapter constructor(
     private val demo: List<PostFeedData>,
@@ -18,7 +19,8 @@ class HomeFeedRecyclerViewAdapter constructor(
     private var itemClick: ItemClickListener = itemClk
     private lateinit var navController: NavController
     inner class Holder(private var _bind: PostArchitectureBinding,
-    var itemClick: ItemClickListener) :
+    var itemClick: ItemClickListener
+    ) :
         RecyclerView.ViewHolder(_bind.root), View.OnClickListener {
         init {
             _bind.root.setOnClickListener(this)
@@ -29,6 +31,7 @@ class HomeFeedRecyclerViewAdapter constructor(
                 it.profileName.text = post.postProfileName
                 it.uploadTime.text = post.postUploadTime
                 it.mainPostParagraph.text = post.postMainParagraph
+                Picasso.get().load(post.postProfilePicture).into(it.profilePicture)
                 it.profilePicture.setOnClickListener {
                     toProfile(post, _bind.root)
                 }

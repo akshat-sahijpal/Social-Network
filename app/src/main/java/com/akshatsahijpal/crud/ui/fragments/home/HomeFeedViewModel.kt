@@ -23,7 +23,6 @@ class HomeFeedViewModel @Inject constructor(
             val data = repo.cultivateData()
             Log.d(">>>>>", data.toString())
             val dataSet = mutableListOf<PostFeedData>()
-
             if (data != null) {
                 for(i in data){
                     i.toObject(PostFeedData::class.java)?.let { dataSet.add(it) }

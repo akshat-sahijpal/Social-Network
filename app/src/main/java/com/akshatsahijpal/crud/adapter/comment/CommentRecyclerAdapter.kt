@@ -1,4 +1,4 @@
-package com.akshatsahijpal.crud.adapter
+package com.akshatsahijpal.crud.adapter.comment
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

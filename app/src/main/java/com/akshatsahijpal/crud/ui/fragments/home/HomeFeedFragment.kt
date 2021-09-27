@@ -11,7 +11,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.akshatsahijpal.crud.R
-import com.akshatsahijpal.crud.adapter.HomeFeedRecyclerViewAdapter
+import com.akshatsahijpal.crud.adapter.home.HomeFeedRecyclerViewAdapter
 import com.akshatsahijpal.crud.databinding.FragmentHomeFeedBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -34,6 +34,7 @@ class HomeFeedFragment : Fragment(), HomeFeedRecyclerViewAdapter.ItemClickListen
         navController = Navigation.findNavController(view)
         _binding.apply {
             model.getDataSet().observe(viewLifecycleOwner) {
+                Toast.makeText(requireContext(), "Result -> $it", Toast.LENGTH_SHORT).show()
                 if(it!=null) {
                     mainFeedRecycler.adapter = HomeFeedRecyclerViewAdapter(it, HomeFeedFragment())
                     Toast.makeText(requireContext(), "Result -> $it", Toast.LENGTH_SHORT).show()
