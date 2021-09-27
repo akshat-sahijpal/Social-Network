@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.akshatsahijpal.crud.R
 import com.akshatsahijpal.crud.adapter.home.HomeFeedRecyclerViewAdapter
 import com.akshatsahijpal.crud.databinding.FragmentHomeFeedBinding
@@ -33,8 +32,9 @@ class HomeFeedFragment : Fragment(), HomeFeedRecyclerViewAdapter.ItemClickListen
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
         _binding.apply {
-            model.getDataSet().observe(viewLifecycleOwner) {
-                Toast.makeText(requireContext(), "Result -> $it", Toast.LENGTH_SHORT).show()
+            model.grabData()
+            model.binder.observe(viewLifecycleOwner) {
+                /*Toast.makeText(requireContext(), "Result -> $it", Toast.LENGTH_SHORT).show()
                 if(it!=null) {
                     mainFeedRecycler.adapter = HomeFeedRecyclerViewAdapter(it, HomeFeedFragment())
                     Toast.makeText(requireContext(), "Result -> $it", Toast.LENGTH_SHORT).show()
@@ -42,6 +42,9 @@ class HomeFeedFragment : Fragment(), HomeFeedRecyclerViewAdapter.ItemClickListen
                     postRedirButton.setOnClickListener {
                         navController.navigate(R.id.action_homeFeedFragment_to_postCreationFragment)
                     }
+                }*/
+                it.observe(viewLifecycleOwner) {
+
                 }
             }
 
