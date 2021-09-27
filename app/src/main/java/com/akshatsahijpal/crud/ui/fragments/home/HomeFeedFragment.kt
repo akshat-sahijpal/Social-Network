@@ -43,6 +43,7 @@ class HomeFeedFragment : Fragment(), HomeFeedRecyclerViewAdapter.ItemClickListen
                     }
                 }
             }
+
         }
     }
 
