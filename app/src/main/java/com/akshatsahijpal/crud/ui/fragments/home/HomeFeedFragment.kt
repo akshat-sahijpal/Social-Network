@@ -10,12 +10,12 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.akshatsahijpal.crud.R
-import com.akshatsahijpal.crud.adapter.home.HomeFeedRecyclerViewAdapter
+import com.akshatsahijpal.crud.adapter.home.PagingAdapter
 import com.akshatsahijpal.crud.databinding.FragmentHomeFeedBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFeedFragment : Fragment(), HomeFeedRecyclerViewAdapter.ItemClickListener {
+class HomeFeedFragment : Fragment(), PagingAdapter.ItemClickListener {
     private lateinit var _binding: FragmentHomeFeedBinding
     private lateinit var navController: NavController
     private val model by viewModels<HomeFeedViewModel>()
@@ -33,6 +33,9 @@ class HomeFeedFragment : Fragment(), HomeFeedRecyclerViewAdapter.ItemClickListen
         navController = Navigation.findNavController(view)
         _binding.apply {
             model.grabData()
+            var adapter = PagingAdapter(HomeFeedFragment())
+            mainFeedRecycler.setHasFixedSize(true)
+            mainFeedRecycler.adapter = adapter
             model.binder.observe(viewLifecycleOwner) {
                 /*Toast.makeText(requireContext(), "Result -> $it", Toast.LENGTH_SHORT).show()
                 if(it!=null) {
@@ -43,11 +46,10 @@ class HomeFeedFragment : Fragment(), HomeFeedRecyclerViewAdapter.ItemClickListen
                         navController.navigate(R.id.action_homeFeedFragment_to_postCreationFragment)
                     }
                 }*/
-                it.observe(viewLifecycleOwner) {
-
+                it.observe(viewLifecycleOwner) {   dt ->
+                    adapter.submitData(viewLifecycleOwner.lifecycle, dt)
                 }
             }
-
         }
     }
 
