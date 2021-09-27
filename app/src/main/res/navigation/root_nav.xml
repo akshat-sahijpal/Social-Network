@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/root_nav"
-    app:startDestination="@id/homeFeedFragment">
+    app:startDestination="@id/signUpFragment">
     <fragment
         android:id="@+id/homeFeedFragment"
         android:name="com.akshatsahijpal.crud.ui.fragments.home.HomeFeedFragment"
@@ -39,4 +39,25 @@
         android:name="com.akshatsahijpal.crud.ui.fragments.profile.ProfilePageFragment"
         android:label="fragment_profile_page"
         tools:layout="@layout/fragment_profile_page" />
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.akshatsahijpal.crud.ui.fragments.auth.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_homeFeedFragment"
+            app:destination="@id/homeFeedFragment" />
+        <action
+            android:id="@+id/action_signUpFragment_to_userRegistrationFragment"
+            app:destination="@id/userRegistrationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userRegistrationFragment"
+        android:name="com.akshatsahijpal.crud.ui.fragments.register.UserRegistrationFragment"
+        android:label="fragment_user_registration"
+        tools:layout="@layout/fragment_user_registration" >
+        <action
+            android:id="@+id/action_userRegistrationFragment_to_homeFeedFragment"
+            app:destination="@id/homeFeedFragment" />
+    </fragment>
 </navigation>

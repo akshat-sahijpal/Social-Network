@@ -43,9 +43,9 @@ class HomeFeedRecyclerViewAdapter constructor(
         fun onItemClicked(position: Int)
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        val view =
-            PostArchitectureBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return Holder(view, itemClick)
+            val view =
+                PostArchitectureBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            return Holder(view, itemClick)
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {

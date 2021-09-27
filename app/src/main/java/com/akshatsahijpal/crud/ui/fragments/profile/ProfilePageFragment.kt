@@ -7,10 +7,11 @@ import android.view.ViewGroup
 import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
-import com.akshatsahijpal.crud.R
 import com.akshatsahijpal.crud.databinding.FragmentProfilePageBinding
 import com.akshatsahijpal.crud.ui.fragments.profile.tabs.TabAdapter
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.material.tabs.TabLayoutMediator
+import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -28,19 +29,28 @@ class ProfilePageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var pager = _binding.viewPagerForProfile
+        var account = GoogleSignIn.getLastSignedInAccount(requireContext())
+        _binding.apply {
+            Picasso.get().load(account.photoUrl).into(profilePicture)
+            profileNameProfileScreen.text = account.displayName
+            profileUserNameProfileScreen.text = "@${account.familyName}"
+            locationOnProfile.text = account.email
+            profileUserDescriptionProfileScreen.text =
+                "Hey folks, Im ${account.displayName} my friends call me ${account.familyName}. You can contact me via mail on ${account.email}"
+        }
         pager.adapter = TabAdapter(parentFragmentManager, lifecycle)
-        TabLayoutMediator(_binding.tabLayoutForProfile, pager){ tab, position ->
+        TabLayoutMediator(_binding.tabLayoutForProfile, pager) { tab, position ->
             when (position) {
                 0 -> {
                     tab.text = "Answers"
                     tab.id = 0
                 }
                 1 -> {
-                    tab.text = "Questions"
+                    tab.text = "Media"
                     tab.id = 1
                 }
                 2 -> {
-                    tab.text = "Media"
+                    tab.text = "Notifications"
                     tab.id = 2
                 }
             }
@@ -50,11 +60,10 @@ class ProfilePageFragment : Fragment() {
             override fun onPageScrolled(
                 position: Int,
                 positionOffset: Float,
-                positionOffsetPixels: Int
+                positionOffsetPixels: Int,
             ) {
                 super.onPageScrolled(position, positionOffset, positionOffsetPixels)
             }
-
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 when (position) {

@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gray_comment">#F5F5F5</color>
     <color name="tag_color">#0000FF</color>
+    <color name="login_ui">#90D246 </color>
 </resources>

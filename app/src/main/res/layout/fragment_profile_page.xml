@@ -12,6 +12,7 @@
         android:layout_height="130dp"
         android:scaleType="centerCrop"
         android:src="@drawable/coverpicture"
+        android:adjustViewBounds="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,7 +28,7 @@
         app:civ_border_color="#FF000000"
         app:civ_border_width="2dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.117"
+        app:layout_constraintHorizontal_bias="0.082"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,7 +45,7 @@
             android:id="@+id/profileNameProfileScreen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="45dp"
+            android:layout_marginStart="30dp"
             android:fontFamily="@font/amaranth_bold"
             android:padding="2dp"
             android:text="Profile Name"
@@ -56,18 +57,19 @@
             android:id="@+id/profileUserNameProfileScreen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="45dp"
+            android:layout_marginStart="30dp"
             android:ellipsize="marquee"
             android:maxLines="1"
             android:text="@string/profile_name"
-            android:textColor="@color/tag_color"
+            android:textColor="@color/login_ui"
             android:textSize="15sp" />
 
         <TextView
             android:id="@+id/profileUserDescriptionProfileScreen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="45dp"
+            android:layout_marginStart="30dp"
+            android:fontFamily="@font/amiko_semibold"
             android:layout_marginEnd="30dp"
             android:ellipsize="marquee"
             android:text="@string/description"
@@ -80,35 +82,22 @@
            <ImageView
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:layout_marginStart="45dp"
-               android:src="@drawable/ic_baseline_location_on_24"
+               android:layout_marginStart="30dp"
+               android:src="@drawable/ic_baseline_alternate_email_24"
                />
+
            <TextView
-               android:layout_width="wrap_content"
                android:id="@+id/locationOnProfile"
+               android:layout_width="wrap_content"
                android:layout_height="wrap_content"
+               android:fontFamily="@font/amiko_semibold"
+               android:layout_marginStart="5dp"
                android:text="Chandigarh"
-               android:layout_marginStart="5dp"
                android:textColor="@color/black"
-               android:textStyle="bold"
                android:textSize="16sp"
-               />
-           <ImageView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_marginStart="100dp"
-               android:src="@drawable/ic_baseline_people_outline_24"
-               />
-           <TextView
-               android:layout_width="wrap_content"
-               android:id="@+id/connectedPeopleOnProfile"
-               android:layout_height="wrap_content"
-               android:text="20"
-               android:layout_marginStart="5dp"
-               android:textColor="@color/black"
-               android:textStyle="bold"
-               android:textSize="16sp"
-               />
+               android:textStyle="bold" />
+
+
        </LinearLayout>
       <RelativeLayout
           android:layout_width="match_parent"
@@ -117,7 +106,8 @@
           <com.google.android.material.tabs.TabLayout
               android:id="@+id/tabLayoutForProfile"
               android:layout_width="match_parent"
-              android:layout_height="55sp" />
+              android:layout_height="55sp"
+              app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget" />
 
           <androidx.viewpager2.widget.ViewPager2
               android:id="@+id/viewPagerForProfile"
@@ -133,15 +123,14 @@
       </RelativeLayout>
     </LinearLayout>
 
-    <Button
+    <ImageButton
         android:id="@+id/button"
         style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="54dp"
+        android:layout_height="51dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="15dp"
-        android:text="connect"
-        app:icon="@drawable/ic_baseline_connect_without_contact_24"
+        android:src="@drawable/ic_baseline_connect_without_contact_24"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.807"

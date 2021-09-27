@@ -9,6 +9,8 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.akshatsahijpal.crud.data.PostFeedData
 import com.akshatsahijpal.crud.databinding.PostCreationFragmentBinding
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
@@ -28,6 +30,7 @@ class PostCreationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        var account = GoogleSignIn.getLastSignedInAccount(requireContext())
         navController = Navigation.findNavController(view)
         _binding.apply {
             var postText = mainPara.text.toString()
@@ -35,6 +38,7 @@ class PostCreationFragment : Fragment() {
                 null -> postButton.isEnabled = false
                 else -> postButton.isEnabled = true
             }
+            Picasso.get().load(account.photoUrl).into(profilePictureOfUser)
             closeWindowButton.setOnClickListener { closeWindow() }
             postButton.setOnClickListener {
                 postButtonImpl(postText, Calendar.getInstance().time)

@@ -8,4 +8,5 @@
     <string name="dwe">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin hendrerit vel sapien sit amet molestie. In nec orci ut augue condimentum egestas. Vivamus lacinia luctus tempus. Nulla iaculis egestas augue. Donec venenatis odio velit, eu tempus lorem vehicula nec. Etiam sed nisl nec dui mollis pulvinar. Donec ut condimentum augue. Integer nec urna consectetur, dictum enim ac, tincidunt diam.</string>
     <string name="_1h">1h</string>
     <string name="description"> dolor Lorem Lorem ipsum dolor Lorem Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor </string>
+    <string name="google_auth">Google Auth</string>
 </resources>
