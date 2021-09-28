@@ -50,7 +50,6 @@ class HomeFeedRecyclerViewAdapter constructor(
                 PostArchitectureBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             return Holder(view, itemClick)
     }
-
     override fun onBindViewHolder(holder: Holder, position: Int) {
         val post: PostFeedData = demo[position]
         holder.connect(post)

@@ -13,11 +13,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.akshatsahijpal.crud.R
 import com.akshatsahijpal.crud.adapter.home.PagingAdapter
 import com.akshatsahijpal.crud.databinding.FragmentHomeFeedBinding
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HomeFeedFragment : Fragment(), PagingAdapter.ItemClickListener {
     private lateinit var _binding: FragmentHomeFeedBinding
+    val db = Firebase.firestore
     private lateinit var navController: NavController
     private val model by viewModels<HomeFeedViewModel>()
     override fun onCreateView(
@@ -42,21 +45,16 @@ class HomeFeedFragment : Fragment(), PagingAdapter.ItemClickListener {
                 navController.navigate(R.id.action_homeFeedFragment_to_postCreationFragment)
             }
             model.binder.observe(viewLifecycleOwner) {
-                /*Toast.makeText(requireContext(), "Result -> $it", Toast.LENGTH_SHORT).show()
-                if(it!=null) {
-                    mainFeedRecycler.adapter = HomeFeedRecyclerViewAdapter(it, HomeFeedFragment())
-                    Toast.makeText(requireContext(), "Result -> $it", Toast.LENGTH_SHORT).show()
-                    mainFeedRecycler.layoutManager = LinearLayoutManager(requireContext())
-                }*/
-                it.observe(viewLifecycleOwner) {   dt ->
+                it.observe(viewLifecycleOwner) { dt ->
                     adapter.submitData(viewLifecycleOwner.lifecycle, dt)
                 }
             }
         }
     }
 
+    //suspend fun makeReq() = db.collection(Constants.POST).get().await().documents
     override fun onItemClicked(position: Int) {
-        Toast.makeText(requireContext(), "for $position", Toast.LENGTH_LONG).show();
+        Toast.makeText(requireContext(), "for $position", Toast.LENGTH_LONG).show()
         navController.navigate(R.id.action_homeFeedFragment_to_expandedPostFragment)
     }
 }
