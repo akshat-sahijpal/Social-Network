@@ -9,7 +9,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:elevation="10dp"
+        android:elevation="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -31,15 +31,20 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center|center_horizontal"
+                android:layout_gravity="center|center_horizontal|center_vertical"
                 android:text="Your Feed"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="24dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/amaranth_bold"
                 />
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
+                android:layout_width="30dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_baseline_speaker_phone_24"
                 />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
