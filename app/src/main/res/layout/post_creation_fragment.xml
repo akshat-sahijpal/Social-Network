@@ -126,6 +126,16 @@
             android:textSize="15dp"
             android:text="Voice"
             />
+        <ImageView
+            android:layout_width="70dp"
+            android:id="@+id/postImgePreview"
+            android:layout_height="120dp"
+            android:layout_marginTop="10dp"
+            android:scaleType="centerCrop"
+            android:visibility="invisible"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/coverpicture"
+            />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
