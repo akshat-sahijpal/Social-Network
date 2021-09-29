@@ -8,7 +8,7 @@ import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.akshatsahijpal.crud.databinding.FragmentProfilePageBinding
-import com.akshatsahijpal.crud.ui.fragments.profile.tabs.TabAdapter
+import com.akshatsahijpal.crud.ui.fragments.profile.tabs.adapter.TabAdapter
 import com.akshatsahijpal.crud.util.Constants.DefaultProfilePhoto
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.material.tabs.TabLayoutMediator
@@ -61,13 +61,6 @@ class ProfilePageFragment : Fragment() {
         }.attach()
         pager.registerOnPageChangeCallback(object :
             ViewPager2.OnPageChangeCallback() {
-            override fun onPageScrolled(
-                position: Int,
-                positionOffset: Float,
-                positionOffsetPixels: Int,
-            ) {
-                super.onPageScrolled(position, positionOffset, positionOffsetPixels)
-            }
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 when (position) {
@@ -89,9 +82,6 @@ class ProfilePageFragment : Fragment() {
                 }
             }
 
-            override fun onPageScrollStateChanged(state: Int) {
-                super.onPageScrollStateChanged(state)
-            }
         })
     }
 }

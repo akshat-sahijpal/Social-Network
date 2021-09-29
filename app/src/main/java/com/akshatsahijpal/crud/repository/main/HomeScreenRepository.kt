@@ -19,8 +19,6 @@ class HomeScreenRepository {
                 HomeScreenDataSource()
             }
         ).liveData
-
-
     suspend fun cultivateData(): List<DocumentSnapshot>? {
         return try {
             val snap = db.collection(POST)

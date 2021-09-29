@@ -1,9 +1,12 @@
-package com.akshatsahijpal.crud.ui.fragments.profile.tabs
+package com.akshatsahijpal.crud.ui.fragments.profile.tabs.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.akshatsahijpal.crud.ui.fragments.profile.tabs.media.MediaSharedTabFragment
+import com.akshatsahijpal.crud.ui.fragments.profile.tabs.answer.QuestionsAskedFragment
+import com.akshatsahijpal.crud.ui.fragments.profile.tabs.qa.QuestionsAnsweredTabFragment
 
 class TabAdapter(var manager:FragmentManager,
 var lifecycle: Lifecycle) : FragmentStateAdapter(manager, lifecycle) {

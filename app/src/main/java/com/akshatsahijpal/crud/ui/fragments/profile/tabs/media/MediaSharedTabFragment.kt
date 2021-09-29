@@ -1,4 +1,4 @@
-package com.akshatsahijpal.crud.ui.fragments.profile.tabs
+package com.akshatsahijpal.crud.ui.fragments.profile.tabs.media
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
