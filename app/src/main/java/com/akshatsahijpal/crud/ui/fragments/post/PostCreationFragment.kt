@@ -19,6 +19,7 @@ import com.akshatsahijpal.crud.databinding.PostCreationFragmentBinding
 import com.akshatsahijpal.crud.util.Constants
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.firebase.storage.StorageReference
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
@@ -27,6 +28,8 @@ import java.util.*
 class PostCreationFragment : Fragment() {
     private lateinit var _binding: PostCreationFragmentBinding
     private lateinit var navController: NavController
+    private var imageURI: String? = null
+    private lateinit var storageRef: StorageReference
     private val model by viewModels<PostCreationViewModel>()
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,7 +39,6 @@ class PostCreationFragment : Fragment() {
         _binding = PostCreationFragmentBinding.inflate(inflater, container, false)
         return _binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var account = GoogleSignIn.getLastSignedInAccount(requireContext())
@@ -68,7 +70,7 @@ class PostCreationFragment : Fragment() {
             time.toString(),
             if (account.photoUrl != null) account.photoUrl.toString() else Constants.DefaultProfilePhoto,
             postText,
-            null,
+            imageURI,
             23,
             323,
             23)
@@ -91,7 +93,7 @@ class PostCreationFragment : Fragment() {
 
     private val PICK = 203
     private fun fetchImageFromGallery() {
-        var intent: Intent =
+        var intent =
             Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
         startActivityForResult(intent, PICK)
     }
@@ -99,10 +101,9 @@ class PostCreationFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == PICK && resultCode == RESULT_OK) {
-            var imageURI = data?.data
-        //    Toast.makeText(requireContext(), "Image=>$imageURI", Toast.LENGTH_LONG).show()
+            imageURI = data?.data.toString()
             _binding.postImgePreview.isVisible = true
-            _binding.postImgePreview.setImageURI(imageURI)
+            _binding.postImgePreview.setImageURI(data?.data)
         }
     }
 

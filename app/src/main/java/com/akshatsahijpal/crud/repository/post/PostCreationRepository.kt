@@ -12,6 +12,7 @@ class PostCreationRepository {
     private val db = Firebase.firestore
     suspend fun upload(uplData: PostFeedData): DocumentReference? {
         return try {
+
             db.collection(POST)
                 .add(uplData).await()
         }catch (e: Exception){
