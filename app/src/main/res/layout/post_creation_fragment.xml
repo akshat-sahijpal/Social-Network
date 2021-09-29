@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal"
-        android:layout_marginTop="30dp"
+        android:elevation="50dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -19,16 +20,16 @@
             android:id="@+id/closeWindowButton"
             android:layout_width="50dp"
             android:layout_height="50dp"
-             android:layout_marginStart="25dp"
+            android:layout_marginStart="25dp"
             android:layout_gravity="start"
             android:src="@drawable/ic_baseline_close_24"
             android:background="@color/white"
             />
-<Space
-    android:layout_width="0dp"
-    android:layout_height="match_parent"
-    android:layout_weight="2"
-    />
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            />
         <com.google.android.material.button.MaterialButton
             android:id="@+id/postButton"
             android:layout_width="wrap_content"
@@ -47,7 +48,12 @@
     android:layout_width="match_parent"
     android:layout_marginTop="20dp"
     android:layout_height="match_parent">
-    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/profilePictureOfUser"
         android:layout_width="96dp"
         android:layout_height="80dp"
@@ -56,6 +62,86 @@
         android:src="@drawable/default_profile_picture"
         app:civ_border_color="#FF000000"
         app:civ_border_width="2dp" />
+    <ImageView
+        android:layout_width="30dp"
+        android:id="@+id/imageForPostFromCamera"
+        android:layout_height="30dp"
+        android:layout_gravity="center|center_horizontal"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/ic_baseline_add_a_photo_24"
+        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center|center_horizontal"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/amaranth_bold"
+            android:textSize="15dp"
+            android:text="Take Photo"
+            />
+        <ImageView
+            android:layout_width="30dp"
+            android:id="@+id/imageForPostFromGallery"
+            android:layout_height="30dp"
+            android:layout_gravity="center|center_horizontal"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/ic_baseline_photo_album_24"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center|center_horizontal"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/amaranth_bold"
+            android:textSize="15dp"
+            android:text="Gallery"
+            />
+        <ImageView
+            android:layout_width="30dp"
+            android:id="@+id/videoForPost"
+            android:layout_height="30dp"
+            android:layout_gravity="center|center_horizontal"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/ic_baseline_video_call_24"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center|center_horizontal"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/amaranth_bold"
+            android:textSize="15dp"
+            android:text="Video"
+            />
+        <ImageView
+            android:layout_width="30dp"
+            android:id="@+id/voiceForPost"
+            android:layout_height="30dp"
+            android:layout_gravity="center|center_horizontal"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/ic_baseline_keyboard_voice_24"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center|center_horizontal"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/amaranth_bold"
+            android:textSize="15dp"
+            android:text="Voice"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/userNameOn"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:fontFamily="@font/amiko_semibold"
+        android:layout_marginBottom="10dp"
+        android:text="UserName"
+        />
     <EditText
         android:id="@+id/mainPara"
         android:layout_width="match_parent"
@@ -64,7 +150,8 @@
         android:background="@null"
         android:gravity="start"
         android:fontFamily="@font/amiko_semibold"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="15dp"
         />
+    </LinearLayout>
 </LinearLayout>
 </LinearLayout>

@@ -36,6 +36,9 @@ class PostCreationFragment : Fragment() {
         var account = GoogleSignIn.getLastSignedInAccount(requireContext())
         navController = Navigation.findNavController(view)
         _binding.apply {
+            userNameOn.text = account.displayName
+            imageForPostFromGallery.setOnClickListener { fetchImageFromGallery() }
+            imageForPostFromCamera.setOnClickListener { startCameraForImage() }
             Picasso.get().load(account.photoUrl).into(profilePictureOfUser)
             if(account.photoUrl==null){
                 Picasso.get().load(Constants.DefaultProfilePhoto).into(profilePictureOfUser)
@@ -50,6 +53,14 @@ class PostCreationFragment : Fragment() {
                 postButtonImpl(postText, Calendar.getInstance().time, account)
             }
         }
+    }
+
+    private fun startCameraForImage() {
+        TODO("Not yet implemented")
+    }
+
+    private fun fetchImageFromGallery() {
+        TODO("Not yet implemented")
     }
 
     private fun postButtonImpl(postText: String, time: Date, account: GoogleSignInAccount) {
