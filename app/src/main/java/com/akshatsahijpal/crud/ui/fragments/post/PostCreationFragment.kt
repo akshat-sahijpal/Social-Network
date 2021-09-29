@@ -11,6 +11,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.akshatsahijpal.crud.data.PostFeedData
 import com.akshatsahijpal.crud.databinding.PostCreationFragmentBinding
+import com.akshatsahijpal.crud.util.Constants
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.squareup.picasso.Picasso
@@ -36,6 +37,9 @@ class PostCreationFragment : Fragment() {
         navController = Navigation.findNavController(view)
         _binding.apply {
             Picasso.get().load(account.photoUrl).into(profilePictureOfUser)
+            if(account.photoUrl==null){
+                Picasso.get().load(Constants.DefaultProfilePhoto).into(profilePictureOfUser)
+            }
             closeWindowButton.setOnClickListener { closeWindow() }
             postButton.setOnClickListener {
                 var postText = mainPara.text.toString()
@@ -53,7 +57,7 @@ class PostCreationFragment : Fragment() {
         var uplData = PostFeedData(account.displayName,
             account.givenName,
             time.toString(),
-            account.photoUrl.toString(),
+            if (account.photoUrl != null) account.photoUrl.toString() else Constants.DefaultProfilePhoto,
             postText,
             null,
             23,

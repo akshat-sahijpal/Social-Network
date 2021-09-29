@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.akshatsahijpal.crud.R
 import com.akshatsahijpal.crud.adapter.home.PagingAdapter
 import com.akshatsahijpal.crud.databinding.FragmentHomeFeedBinding
+import com.akshatsahijpal.crud.util.Constants
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -40,6 +41,12 @@ class HomeFeedFragment : Fragment(), PagingAdapter.ItemClickListener {
         navController = Navigation.findNavController(view)
         _binding.apply {
             Picasso.get().load(account.photoUrl).into(profilePicture)
+            if(account.photoUrl==null){
+                Picasso.get().load(Constants.DefaultProfilePhoto).into(profilePicture)
+            }
+            profilePicture.setOnClickListener {
+                navController.navigate(R.id.action_homeFeedFragment_to_profilePageFragment)
+            }
             model.grabData()
             var adapter = PagingAdapter(HomeFeedFragment())
             mainFeedRecycler.setHasFixedSize(true)

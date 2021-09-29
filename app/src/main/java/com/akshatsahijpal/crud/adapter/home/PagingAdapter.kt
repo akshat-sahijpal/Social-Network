@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.akshatsahijpal.crud.R
 import com.akshatsahijpal.crud.data.PostFeedData
 import com.akshatsahijpal.crud.databinding.PostArchitectureBinding
+import com.akshatsahijpal.crud.util.Constants
 import com.squareup.picasso.Picasso
 
 class PagingAdapter constructor(itemClk: ItemClickListener) :
@@ -47,6 +48,9 @@ class PagingAdapter constructor(itemClk: ItemClickListener) :
                 it.uploadTime.text = post.postUploadTime
                 it.mainPostParagraph.text = post.postMainParagraph
                 Picasso.get().load(post.postProfilePicture).into(it.profilePicture)
+                if(post.postProfilePicture==null){
+                    Picasso.get().load(Constants.DefaultProfilePhoto).into(it.profilePicture)
+                }
                 it.profilePicture.setOnClickListener {
                     toProfile(post, _bind.root)
                 }

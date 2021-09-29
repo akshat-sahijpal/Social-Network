@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.akshatsahijpal.crud.databinding.FragmentProfilePageBinding
 import com.akshatsahijpal.crud.ui.fragments.profile.tabs.TabAdapter
+import com.akshatsahijpal.crud.util.Constants.DefaultProfilePhoto
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.material.tabs.TabLayoutMediator
 import com.squareup.picasso.Picasso
@@ -32,6 +33,9 @@ class ProfilePageFragment : Fragment() {
         var account = GoogleSignIn.getLastSignedInAccount(requireContext())
         _binding.apply {
             Picasso.get().load(account.photoUrl).into(profilePicture)
+            if(account.photoUrl==null){
+                Picasso.get().load(DefaultProfilePhoto).into(profilePicture)
+            }
             profileNameProfileScreen.text = account.displayName
             profileUserNameProfileScreen.text = "@${account.familyName}"
             locationOnProfile.text = account.email
@@ -50,7 +54,7 @@ class ProfilePageFragment : Fragment() {
                     tab.id = 1
                 }
                 2 -> {
-                    tab.text = "Notifications"
+                    tab.text = "Chats"
                     tab.id = 2
                 }
             }
