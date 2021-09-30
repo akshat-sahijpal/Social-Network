@@ -2,13 +2,12 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:elevation="40dp"
-    app:cardCornerRadius="30dp"
-    android:layout_marginStart="10dp"
-    android:layout_marginEnd="10dp"
-    android:layout_marginTop="10dp"
     android:layout_height="wrap_content"
     android:orientation="vertical">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
@@ -18,6 +17,7 @@
         android:layout_height="100dp"
         android:orientation="horizontal"
         android:padding="5dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -31,41 +31,46 @@
             android:src="@drawable/default_profile_picture"
             app:civ_border_color="#FF000000"
             app:civ_border_width="2dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
 <LinearLayout
     android:layout_width="wrap_content"
     android:orientation="vertical"
     android:layout_marginStart="10dp"
     android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/profileName"
+            android:id="@+id/profileUserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/amaranth_bold"
             android:padding="2dp"
             android:text="Profile Name"
             android:textColor="@color/black"
-            android:textSize="17sp"
+            android:textSize="22sp"
             android:textStyle="bold" />
+    <TextView
+        android:id="@+id/profileName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="marquee"
+        android:maxLines="1"
+        android:text="1h"
+        android:textSize="15sp" />
 
-        <TextView
-            android:id="@+id/profileUserName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="marquee"
-            android:maxLines="1"
-            android:textColor="@color/tag_color"
-            android:text="@string/profile_name"
-            android:textSize="15sp" />
+    <TextView
+        android:id="@+id/uploadTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="marquee"
+        android:maxLines="1"
+        android:text="1h"
+        android:textSize="13sp" />
 
-        <TextView
-            android:id="@+id/uploadTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="marquee"
-            android:maxLines="1"
-            android:text="1h"
-            android:textSize="14sp" />
 </LinearLayout>
+        </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
@@ -81,9 +86,8 @@
             android:layout_marginEnd="20dp"
             android:fontFamily="@font/acme"
             android:padding="10dp"
-            android:textColor="@color/black"
             android:text="@string/five_centuries"
-             android:textSize="22sp" />
+             android:textSize="18sp" />
         <com.google.android.material.card.MaterialCardView
             android:layout_width="wrap_content"
             android:layout_marginTop="10dp"
@@ -105,68 +109,73 @@
             />
         </com.google.android.material.card.MaterialCardView>
 
+    </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:layout_marginBottom="30dp"
             android:orientation="horizontal"
-            android:layout_height="0dp">
-        <ImageButton
-            android:id="@+id/likeButton"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="20dp"
-            android:src="@drawable/ic_baseline_favorite_border_24"
-            android:background="@color/white"
-            />
-            <ImageButton
-                android:id="@+id/voiceRecordingButton"
-                android:layout_width="50dp"
+            android:layout_marginBottom="20dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_gravity="center|center_vertical"
+                android:layout_marginStart="30dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="20dp"
-                android:src="@drawable/ic_baseline_keyboard_voice_24"
-                android:background="@color/white"
+                android:src="@drawable/ic_baseline_comment_24"
                 />
-            <ImageButton
-                android:id="@+id/voidLiveTalkButton"
-                android:layout_width="50dp"
+            <TextView
+                android:layout_width="wrap_content"
+                android:id="@+id/CommentCount"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="20dp"
-                android:src="@drawable/ic_baseline_record_voice_over_24"
-                android:background="@color/white"
+                android:text="20"
+                android:textStyle="bold"
+                android:layout_gravity="center|center_vertical"
+                android:layout_marginStart="7dp"
                 />
-            <ImageButton
-            android:id="@+id/commentButton"
-            android:layout_width="50dp"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="20dp"
-            android:src="@drawable/ic_baseline_add_comment_24"
-            android:background="@color/white"
-            />
-        <ImageButton
-            android:id="@+id/shareButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:layout_weight="1"
-            android:layout_marginStart="20dp"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_baseline_share_24"
-            android:background="@color/white"
-            />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_gravity="center|center_vertical"
+                android:layout_marginStart="50dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_autorenew_24"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:id="@+id/RetweetCount"
+                android:layout_height="wrap_content"
+                android:text="50"
+                android:textStyle="bold"
+                android:layout_gravity="center|center_vertical"
+                android:layout_marginStart="7dp"
+                />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_gravity="center|center_vertical"
+                android:layout_marginStart="50dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_favorite_border_24"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:id="@+id/likeButtonCount"
+                android:layout_height="wrap_content"
+                android:text="50"
+                android:textStyle="bold"
+                android:layout_gravity="center|center_vertical"
+                android:layout_marginStart="7dp"
+                />
+            <ImageView
+                android:id="@+id/shareButtonOp"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center|center_vertical"
+                android:layout_marginStart="50dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_share_24"
+                />
+
         </LinearLayout>
     </LinearLayout>
-    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"/>
 </androidx.cardview.widget.CardView>

@@ -44,7 +44,7 @@ class PagingAdapter constructor(itemClk: ItemClickListener) :
         fun connect(post: PostFeedData) {
             _bind.let {
                 it.profileUserName.text = post.postUserName
-                it.profileName.text = post.postProfileName
+                it.profileName.text = "@${post.postProfileName}"
                 it.uploadTime.text = post.postUploadTime
                 it.mainPostParagraph.text = post.postMainParagraph
                 Picasso.get().load(post.postProfilePicture).into(it.profilePicture)
