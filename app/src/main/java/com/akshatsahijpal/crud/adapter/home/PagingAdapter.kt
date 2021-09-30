@@ -48,6 +48,9 @@ class PagingAdapter constructor(itemClk: ItemClickListener) :
                 it.uploadTime.text = post.postUploadTime
                 it.mainPostParagraph.text = post.postMainParagraph
                 Picasso.get().load(post.postProfilePicture).into(it.profilePicture)
+                if(post.postAddPhoto!=null){
+                    Picasso.get().load(post.postAddPhoto).into(it.PostImage)
+                }
                 if(post.postProfilePicture==null){
                     Picasso.get().load(Constants.DefaultProfilePhoto).into(it.profilePicture)
                 }
