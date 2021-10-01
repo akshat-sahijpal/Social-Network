@@ -13,11 +13,15 @@
         <entry key="..\:/Projects/AndroidProjects/Crud/app/src/main/res/layout/fragment_profile_page.xml" value="0.2" />
         <entry key="..\:/Projects/AndroidProjects/Crud/app/src/main/res/layout/fragment_sign_up.xml" value="0.152" />
         <entry key="..\:/Projects/AndroidProjects/Crud/app/src/main/res/layout/fragment_user_registration.xml" value="0.1" />
+        <entry key="..\:/Projects/AndroidProjects/Crud/app/src/main/res/layout/image_placeholde.xml" value="0.2234375" />
         <entry key="..\:/Projects/AndroidProjects/Crud/app/src/main/res/layout/personal_feed_fragment.xml" value="0.264" />
         <entry key="..\:/Projects/AndroidProjects/Crud/app/src/main/res/layout/post_architecture.xml" value="0.33" />
-        <entry key="..\:/Projects/AndroidProjects/Crud/app/src/main/res/layout/post_creation_fragment.xml" value="0.25" />
+        <entry key="..\:/Projects/AndroidProjects/Crud/app/src/main/res/layout/post_creation_fragment.xml" value="0.18" />
         <entry key="..\:/Projects/AndroidProjects/Crud/app/src/main/res/layout/profile_post_architecture.xml" value="0.2234375" />
         <entry key="..\:/Projects/AndroidProjects/Crud/app/src/main/res/layout/questions_answered_tab_fragment.xml" value="0.1" />
+        <entry key="..\:/Projects/AndroidProjects/Crud/app/src/main/res/layout/shimmer_place_holder.xml" value="0.2234375" />
+        <entry key="..\:/Projects/AndroidProjects/Crud/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1537037037037037" />
+        <entry key="..\:/Projects/AndroidProjects/Crud/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.17395833333333333" />
       </map>
     </option>
   </component>

@@ -50,7 +50,7 @@
             android:fontFamily="@font/amaranth_bold"
             android:padding="2dp"
             android:text="Profile Name"
-            android:textColor="@color/black"
+            android:textColor="@color/main_title"
             android:textSize="23sp"
             android:textStyle="bold" />
 
@@ -70,6 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
+            android:textColor="@color/white"
             android:fontFamily="@font/amiko_semibold"
             android:layout_marginEnd="30dp"
             android:ellipsize="marquee"
@@ -94,7 +95,7 @@
                android:fontFamily="@font/amiko_semibold"
                android:layout_marginStart="5dp"
                android:text="Chandigarh"
-               android:textColor="@color/black"
+               android:textColor="@color/white"
                android:textSize="16sp"
                android:textStyle="bold" />
 

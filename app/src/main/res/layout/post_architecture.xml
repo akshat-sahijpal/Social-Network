@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:backgroundTint="@color/black"
     android:layout_height="wrap_content"
     android:orientation="vertical">
     <LinearLayout
@@ -52,6 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ellipsize="marquee"
+        android:textColor="@color/login_ui"
         android:maxLines="1"
         android:text="1h"
         android:textSize="15sp" />
@@ -61,6 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ellipsize="marquee"
+        android:textColor="@color/white"
         android:maxLines="1"
         android:text="1h"
         android:textSize="13sp" />
@@ -81,13 +84,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:fontFamily="@font/amiko_semibold"
             android:padding="10dp"
             android:text="@string/five_centuries"
              android:textSize="18sp" />
         <com.google.android.material.card.MaterialCardView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_marginTop="10dp"
             android:layout_height="wrap_content"
             app:cardBackgroundColor="@color/white"
