@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
+import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.paging.PagingDataAdapter
@@ -31,7 +32,6 @@ class PagingAdapter constructor(itemClk: ItemClickListener) :
             }
         }
     }
-
     inner class Holder(
         private var _bind: PostArchitectureBinding,
         var itemClick: ItemClickListener,
@@ -40,7 +40,6 @@ class PagingAdapter constructor(itemClk: ItemClickListener) :
         init {
             _bind.root.setOnClickListener(this)
         }
-
         fun connect(post: PostFeedData) {
             _bind.let {
                 it.profileUserName.text = post.postUserName
@@ -48,18 +47,20 @@ class PagingAdapter constructor(itemClk: ItemClickListener) :
                 it.uploadTime.text = post.postUploadTime
                 it.mainPostParagraph.text = post.postMainParagraph
                 Picasso.get().load(post.postProfilePicture).into(it.profilePicture)
+                if(post.postAddPhoto!=null){
+                    it.PostImage.isVisible = true
+                    Picasso.get().load(post.postAddPhoto).into(it.PostImage)
+                }
                 if(post.postProfilePicture==null){
                     Picasso.get().load(Constants.DefaultProfilePhoto).into(it.profilePicture)
                 }
                 it.profilePicture.setOnClickListener {
-                    toProfile(post, _bind.root)
+                   // toProfile(post, _bind.root)
                 }
             }
         }
 
         override fun onClick(p0: View?) {
-            val position = absoluteAdapterPosition
-            itemClick.onItemClicked(position)
         }
 
         private fun toProfile(post: PostFeedData, root: CardView) {

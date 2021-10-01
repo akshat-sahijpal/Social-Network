@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/darker_gray"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
@@ -47,7 +44,7 @@
             android:fontFamily="@font/amaranth_bold"
             android:padding="2dp"
             android:text="Profile Name"
-            android:textColor="@color/black"
+            android:textColor="@color/main_title"
             android:textSize="22sp"
             android:textStyle="bold" />
     <TextView
@@ -84,7 +81,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:fontFamily="@font/acme"
+            android:textColor="@color/black"
+            android:fontFamily="@font/amiko_semibold"
             android:padding="10dp"
             android:text="@string/five_centuries"
              android:textSize="18sp" />
