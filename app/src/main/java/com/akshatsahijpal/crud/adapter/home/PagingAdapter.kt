@@ -1,5 +1,6 @@
 package com.akshatsahijpal.crud.adapter.home
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ import com.akshatsahijpal.crud.R
 import com.akshatsahijpal.crud.data.PostFeedData
 import com.akshatsahijpal.crud.databinding.PostArchitectureBinding
 import com.akshatsahijpal.crud.util.Constants
+import com.bumptech.glide.Glide
 import com.squareup.picasso.Picasso
 
 class PagingAdapter constructor(itemClk: ItemClickListener) :
@@ -32,6 +34,7 @@ class PagingAdapter constructor(itemClk: ItemClickListener) :
             }
         }
     }
+
     inner class Holder(
         private var _bind: PostArchitectureBinding,
         var itemClick: ItemClickListener,
@@ -40,6 +43,7 @@ class PagingAdapter constructor(itemClk: ItemClickListener) :
         init {
             _bind.root.setOnClickListener(this)
         }
+
         fun connect(post: PostFeedData) {
             _bind.let {
                 it.profileUserName.text = post.postUserName
@@ -47,15 +51,17 @@ class PagingAdapter constructor(itemClk: ItemClickListener) :
                 it.uploadTime.text = post.postUploadTime
                 it.mainPostParagraph.text = post.postMainParagraph
                 Picasso.get().load(post.postProfilePicture).into(it.profilePicture)
-                if(post.postAddPhoto!=null){
+                if (post.postAddPhoto != null) {
                     it.PostImage.isVisible = true
-                    Picasso.get().load(post.postAddPhoto).into(it.PostImage)
+                    //   Picasso.get().load(post.postAddPhoto).into(it.PostImage)
+                    Log.d("Displaying this image->", "${post.postAddPhoto}")
+                    Glide.with(_bind.root).load(post.postAddPhoto).centerCrop().into(it.PostImage)
                 }
-                if(post.postProfilePicture==null){
+                if (post.postProfilePicture == null) {
                     Picasso.get().load(Constants.DefaultProfilePhoto).into(it.profilePicture)
                 }
                 it.profilePicture.setOnClickListener {
-                   // toProfile(post, _bind.root)
+                    // toProfile(post, _bind.root)
                 }
             }
         }
@@ -68,17 +74,20 @@ class PagingAdapter constructor(itemClk: ItemClickListener) :
             navController.navigate(R.id.action_homeFeedFragment_to_profilePageFragment)
         }
     }
+
     override fun onBindViewHolder(holder: Holder, position: Int) {
         val currentPost = getItem(position)
         if (currentPost != null) {
             holder.connect(currentPost)
         }
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view =
             PostArchitectureBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return Holder(view, itemClick)
     }
+
     interface ItemClickListener {
         fun onItemClicked(position: Int)
     }
