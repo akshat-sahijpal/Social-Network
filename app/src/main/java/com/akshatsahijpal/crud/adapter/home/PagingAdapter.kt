@@ -53,9 +53,9 @@ class PagingAdapter constructor(itemClk: ItemClickListener) :
                 Picasso.get().load(post.postProfilePicture).into(it.profilePicture)
                 if (post.postAddPhoto != null) {
                     it.PostImage.isVisible = true
-                    //   Picasso.get().load(post.postAddPhoto).into(it.PostImage)
+                   Picasso.get().load(post.postAddPhoto).into(it.PostImage)
                     Log.d("Displaying this image->", "${post.postAddPhoto}")
-                    Glide.with(_bind.root).load(post.postAddPhoto).centerCrop().into(it.PostImage)
+                //    Glide.with(_bind.root).load(post.postAddPhoto).centerCrop().into(it.PostImage)
                 }
                 if (post.postProfilePicture == null) {
                     Picasso.get().load(Constants.DefaultProfilePhoto).into(it.profilePicture)

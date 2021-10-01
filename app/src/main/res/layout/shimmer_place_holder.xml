@@ -117,13 +117,13 @@
             android:orientation="horizontal"
             android:layout_marginBottom="20dp"
             android:layout_height="wrap_content">
+
             <ImageView
-                android:layout_width="20dp"
+                android:layout_width="36dp"
+                android:layout_height="20dp"
                 android:layout_gravity="center|center_vertical"
                 android:layout_marginStart="30dp"
-                android:layout_height="20dp"
-                android:background="@color/colorGrey"
-                />
+                android:background="@color/colorGrey" />
             <TextView
                 android:layout_width="20dp"
                 android:id="@+id/CommentCount"
@@ -131,54 +131,46 @@
                 android:background="@color/colorGrey"
                 android:textStyle="bold"
                 android:layout_gravity="center|center_vertical"
-                android:layout_marginStart="7dp"
                 />
             <ImageView
-                android:layout_width="20dp"
+                android:layout_width="36dp"
+                android:layout_height="20dp"
                 android:layout_gravity="center|center_vertical"
                 android:layout_marginStart="30dp"
-                android:layout_height="20dp"
-                android:background="@color/colorGrey"
-                />
+                android:background="@color/colorGrey" />
             <TextView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:background="@color/colorGrey"
                 android:textStyle="bold"
                 android:layout_gravity="center|center_vertical"
-                android:layout_marginStart="7dp"
                 />
             <ImageView
-                android:layout_width="20dp"
+                android:layout_width="36dp"
+                android:layout_height="20dp"
                 android:layout_gravity="center|center_vertical"
                 android:layout_marginStart="30dp"
-                android:layout_height="20dp"
-                android:background="@color/colorGrey"
-                />
+                android:background="@color/colorGrey" />
             <TextView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:background="@color/colorGrey"
                 android:textStyle="bold"
                 android:layout_gravity="center|center_vertical"
-                android:layout_marginStart="7dp"
                 />
             <ImageView
-                android:layout_width="20dp"
+                android:layout_width="36dp"
+                android:layout_height="20dp"
                 android:layout_gravity="center|center_vertical"
                 android:layout_marginStart="30dp"
-                android:layout_height="20dp"
-                android:background="@color/colorGrey"
-                />
+                android:background="@color/colorGrey" />
             <TextView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:background="@color/colorGrey"
                 android:textStyle="bold"
                 android:layout_gravity="center|center_vertical"
-                android:layout_marginStart="7dp"
                 />
-
         </LinearLayout>
     </LinearLayout>
     <View
