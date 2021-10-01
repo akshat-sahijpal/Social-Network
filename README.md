@@ -21,3 +21,19 @@ It simply uses firebase as a backend and performs authentication and storage ope
 - [Material Components for Android](https://github.com/material-components/material-components-android) - Modular and customizable Material Design UI components for Android.
 - [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html) - For writing Gradle build scripts using Kotlin.
 - [Pager 3](https://developer.android.com/reference/kotlin/androidx/paging/Pager) - For Pagination of data
+## Architecture
+This app uses [***MVVM (Model View View-Model)***](https://developer.android.com/jetpack/docs/guide#recommended-app-arch) architecture.
+
+![](https://developer.android.com/topic/libraries/architecture/images/final-architecture.png)
+# App 
+| Home | Profile |
+|:-:|:-:|
+| ![Third](https://user-images.githubusercontent.com/80918746/135667016-a6ba8901-5f78-4c4c-9f68-504365b2b5b9.png) | ![Fourth](https://user-images.githubusercontent.com/80918746/135667060-9d6a3b9e-5285-40ea-aec4-f7ddcb3eed64.png) | 
+| Text Post | Image Post | 
+| ![Third](https://user-images.githubusercontent.com/80918746/135667209-c9e28134-be0c-4757-b5e2-3f2186083f42.png) | ![Fourth](https://user-images.githubusercontent.com/80918746/135667277-30199145-7d6b-4617-9e31-88026c239779.png) | 
+| Auth | Auth | 
+| ![First](https://user-images.githubusercontent.com/80918746/135666196-46d4e5f1-4bc3-4b8a-89f4-a592d0c1425c.png) | ![Sec](https://user-images.githubusercontent.com/80918746/135666256-4aee9312-d1c5-46ff-801c-b7e0e2e57a82.png) |
+
+
+ 
+
