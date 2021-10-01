@@ -5,10 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.akshatsahijpal.crud.R
 import com.akshatsahijpal.crud.adapter.home.PagingAdapter
@@ -52,8 +54,20 @@ class HomeFeedFragment : Fragment(), PagingAdapter.ItemClickListener {
             mainFeedRecycler.setHasFixedSize(true)
             mainFeedRecycler.adapter = adapter
             mainFeedRecycler.layoutManager = LinearLayoutManager(requireContext())
+            _binding.shimmerFrameLayout.isVisible = false
             postRedirButton.setOnClickListener {
                 navController.navigate(R.id.action_homeFeedFragment_to_postCreationFragment)
+            }
+            adapter.addLoadStateListener {
+                if (it.source.refresh is LoadState.Loading) {
+                    _binding.shimmerFrameLayout.isVisible = true
+                    _binding.shimmerFrameLayout.startShimmer()
+                } else {
+                    _binding.shimmerFrameLayout.stopShimmer()
+                    _binding.shimmerFrameLayout.isVisible = false
+                }
+                _binding.mainFeedRecycler.isVisible = it.source.refresh is LoadState.NotLoading
+
             }
             model.binder.observe(viewLifecycleOwner) {
                 it.observe(viewLifecycleOwner) { dt ->
