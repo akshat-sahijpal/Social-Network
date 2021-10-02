@@ -34,6 +34,9 @@ import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
 import java.util.*
+import android.media.MediaScannerConnection
+import android.media.MediaScannerConnection.OnScanCompletedListener
+
 
 @AndroidEntryPoint
 class PostCreationFragment : Fragment() {
@@ -42,7 +45,7 @@ class PostCreationFragment : Fragment() {
     private var imageURI: Uri? = null
     private var camera: Camera? = null
     private var imageCapture: ImageCapture? = null
-    private var CapturedImageFromCameraURI:Uri? = null
+    private var CapturedImageFromCameraURI: Uri? = null
     private var photoPostURL: String? = null
     private lateinit var CameraPreview: PreviewView
     private lateinit var cameraProvider: ListenableFuture<ProcessCameraProvider>
@@ -64,7 +67,7 @@ class PostCreationFragment : Fragment() {
         var account = GoogleSignIn.getLastSignedInAccount(requireContext())
         navController = Navigation.findNavController(view)
         _binding.apply {
-             userNameOn.text = account.displayName
+            userNameOn.text = account.displayName
             imageForPostFromGallery.setOnClickListener { fetchImageFromGallery() }
             imageForPostFromCamera.setOnClickListener { startCameraForImage() }
             Picasso.get().load(account.photoUrl).into(profilePictureOfUser)
@@ -116,7 +119,7 @@ class PostCreationFragment : Fragment() {
                 android.Manifest.permission.CAMERA
             ) == PackageManager.PERMISSION_GRANTED
         ) {
-              //done
+            //done
             generateImageFromCamera()
         } else {
             requestPermissions(arrayOf(android.Manifest.permission.CAMERA), Permission_broker)
@@ -126,18 +129,18 @@ class PostCreationFragment : Fragment() {
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
-        grantResults: IntArray
+        grantResults: IntArray,
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == Permission_broker
             && grantResults[0] == PackageManager.PERMISSION_GRANTED
         ) {
-           // done
+            // done
             generateImageFromCamera()
         } else if (requestCode == Permission_broker
             && grantResults[0] == PackageManager.PERMISSION_DENIED
         ) {
-
+            Toast.makeText(requireContext(), "Camera Won't work if not permitted", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -147,6 +150,7 @@ class PostCreationFragment : Fragment() {
             Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
         startActivityForResult(intent, PICK)
     }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == PICK && resultCode == RESULT_OK) {
@@ -158,6 +162,7 @@ class PostCreationFragment : Fragment() {
             }
         }
     }
+
     private fun uploadImage() {
         val fileReference = storageRef.child("${UUID.randomUUID()}.${getFileExtension()}")
         imageURI?.let {
@@ -177,20 +182,52 @@ class PostCreationFragment : Fragment() {
                     _binding.progressBarForPhoto.isVisible = true
                     _binding.progressBarForPhoto.progress = progress.toInt()
                     _binding.postButton.isEnabled = false
-            }
+                }
         }
     }
+
+    private fun uploadImageOnDB(capturedImageFromCameraURI: Uri) {
+        val fileReference = storageRef.child("${UUID.randomUUID()}.${getImageCapturedExtension(capturedImageFromCameraURI)}")
+        fileReference.putFile(capturedImageFromCameraURI)
+                .addOnSuccessListener { result ->
+                    val res = result.storage.downloadUrl
+                    res.addOnSuccessListener {
+                        _binding.progressBarForPhoto.isVisible = false
+                        photoPostURL = res.result.toString()
+                        _binding.postButton.isEnabled = true
+                    }
+                }.addOnFailureListener { exec ->
+                    Toast.makeText(requireContext(), "Failed To Upload $exec", Toast.LENGTH_LONG)
+                        .show()
+                }.addOnProgressListener { snap ->
+                    val progress = (100 * snap.bytesTransferred / snap.totalByteCount)
+                    _binding.progressBarForPhoto.isVisible = true
+                    _binding.progressBarForPhoto.progress = progress.toInt()
+                    _binding.postButton.isEnabled = false
+                }
+
+    }
+
+    private fun getImageCapturedExtension(uri: Uri): String {
+        val activity = requireActivity()
+        val resolver = activity.contentResolver
+        val mime = MimeTypeMap.getSingleton()
+        return mime.getExtensionFromMimeType(uri?.let { resolver.getType(it) }).toString()
+    }
+
     private fun getFileExtension(): String {
-        var activity = requireActivity()
-        var resolver = activity.contentResolver
-        var mime = MimeTypeMap.getSingleton()
+        val activity = requireActivity()
+        val resolver = activity.contentResolver
+        val mime = MimeTypeMap.getSingleton()
         return mime.getExtensionFromMimeType(this.imageURI?.let { resolver.getType(it) }).toString()
     }
+
     private fun closeWindow() {
         navController.popBackStack()
     }
+
     private fun generateImageFromCamera() {
-       bindCamera()
+        bindCamera()
         _binding.apply {
             imageCaptureBTN.isVisible = true
             textCapture.isVisible = true
@@ -199,9 +236,11 @@ class PostCreationFragment : Fragment() {
             }
         }
     }
-    private fun captureImage(){
+
+    private fun captureImage() {
         var photoFile =
-            File(requireActivity().externalMediaDirs.firstOrNull(),"CapturePro-${System.currentTimeMillis()}.jpg")
+            File(requireActivity().externalMediaDirs.firstOrNull(),
+                "CapturePro-${System.currentTimeMillis()}.jpg")
         var imageOptions: ImageCapture.OutputFileOptions = ImageCapture.OutputFileOptions.Builder(
             photoFile
         ).build()
@@ -210,15 +249,23 @@ class PostCreationFragment : Fragment() {
             ContextCompat.getMainExecutor(requireContext()),
             object : ImageCapture.OnImageSavedCallback {
                 override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
+                    val imagePath = File(requireActivity().externalCacheDir!!.absolutePath)
                     Toast.makeText(
                         requireContext(),
-                        "Image Saved ${outputFileResults.savedUri} at ${requireActivity().externalCacheDir!!.absolutePath}",
+                        "Image Saved ${requireActivity().externalCacheDir!!.absolutePath}",
                         Toast.LENGTH_LONG
                     ).show()
+                    MediaScannerConnection.scanFile(requireContext(), arrayOf(imagePath.absolutePath), null
+                    ) { _, uri ->
+                        Log.i("onScanCompleted",
+                            uri.path!!)
+                        CapturedImageFromCameraURI = uri
+                    }
                     CapturedImageFromCameraURI = outputFileResults.savedUri
-                    Log.d("TAG", "onImageSaved:  ${requireActivity().externalCacheDir!!.absolutePath}")
+                    CapturedImageFromCameraURI?.let { uploadImageOnDB(it) }
+                    Log.d("TAG",
+                        "onImageSaved:  ${requireActivity().externalCacheDir!!.absolutePath}")
                 }
-
                 override fun onError(exception: ImageCaptureException) {
                     Toast.makeText(
                         requireContext(),
@@ -236,7 +283,8 @@ class PostCreationFragment : Fragment() {
             bindPreview(prov)
         }, ContextCompat.getMainExecutor(requireContext()))
     }
-    private fun bindPreview(prov: ProcessCameraProvider)   {
+
+    private fun bindPreview(prov: ProcessCameraProvider) {
         prov.unbindAll()
         val preview = Preview.Builder()
             .build()
