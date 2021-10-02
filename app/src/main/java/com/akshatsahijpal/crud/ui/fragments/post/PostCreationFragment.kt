@@ -6,11 +6,15 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.MimeTypeMap
 import android.widget.Toast
+import androidx.camera.core.*
+import androidx.camera.lifecycle.ProcessCameraProvider
+import androidx.camera.view.PreviewView
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -23,10 +27,12 @@ import com.akshatsahijpal.crud.util.Constants
 import com.akshatsahijpal.crud.util.Constants.Permission_broker
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.common.util.concurrent.ListenableFuture
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
+import java.io.File
 import java.util.*
 
 @AndroidEntryPoint
@@ -34,7 +40,13 @@ class PostCreationFragment : Fragment() {
     private lateinit var _binding: PostCreationFragmentBinding
     private lateinit var navController: NavController
     private var imageURI: Uri? = null
+    private var camera: Camera? = null
+    private var imageCapture: ImageCapture? = null
+    private var CapturedImageFromCameraURI:Uri? = null
     private var photoPostURL: String? = null
+    private lateinit var CameraPreview: PreviewView
+    private lateinit var cameraProvider: ListenableFuture<ProcessCameraProvider>
+    private var CameraLens: Int = CameraSelector.LENS_FACING_BACK
     private var storageRef: StorageReference =
         FirebaseStorage.getInstance().getReference("PostImages")
     private val model by viewModels<PostCreationViewModel>()
@@ -52,7 +64,7 @@ class PostCreationFragment : Fragment() {
         var account = GoogleSignIn.getLastSignedInAccount(requireContext())
         navController = Navigation.findNavController(view)
         _binding.apply {
-            userNameOn.text = account.displayName
+             userNameOn.text = account.displayName
             imageForPostFromGallery.setOnClickListener { fetchImageFromGallery() }
             imageForPostFromCamera.setOnClickListener { startCameraForImage() }
             Picasso.get().load(account.photoUrl).into(profilePictureOfUser)
@@ -96,6 +108,8 @@ class PostCreationFragment : Fragment() {
     }
 
     private fun startCameraForImage() {
+        _binding.CameraPreview2323.isVisible = true
+        CameraPreview = _binding.CameraPreview2323
         // First ask for camera permissions
         if (ContextCompat.checkSelfPermission(
                 requireContext(),
@@ -176,6 +190,69 @@ class PostCreationFragment : Fragment() {
         navController.popBackStack()
     }
     private fun generateImageFromCamera() {
-        Toast.makeText(requireContext(), "Click Click", Toast.LENGTH_SHORT).show()
+       bindCamera()
+        _binding.apply {
+            imageCaptureBTN.isVisible = true
+            textCapture.isVisible = true
+            imageCaptureBTN.setOnClickListener {
+                captureImage()
+            }
+        }
+    }
+    private fun captureImage(){
+        var photoFile =
+            File(requireActivity().externalMediaDirs.firstOrNull(),"CapturePro-${System.currentTimeMillis()}.jpg")
+        var imageOptions: ImageCapture.OutputFileOptions = ImageCapture.OutputFileOptions.Builder(
+            photoFile
+        ).build()
+        imageCapture?.takePicture(
+            imageOptions,
+            ContextCompat.getMainExecutor(requireContext()),
+            object : ImageCapture.OnImageSavedCallback {
+                override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
+                    Toast.makeText(
+                        requireContext(),
+                        "Image Saved ${outputFileResults.savedUri} at ${requireActivity().externalCacheDir!!.absolutePath}",
+                        Toast.LENGTH_LONG
+                    ).show()
+                    CapturedImageFromCameraURI = outputFileResults.savedUri
+                    Log.d("TAG", "onImageSaved:  ${requireActivity().externalCacheDir!!.absolutePath}")
+                }
+
+                override fun onError(exception: ImageCaptureException) {
+                    Toast.makeText(
+                        requireContext(),
+                        "Failed: ${exception.message} and ${exception.localizedMessage}",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            })
+    }
+
+    private fun bindCamera() {
+        cameraProvider = ProcessCameraProvider.getInstance(requireContext())
+        cameraProvider.addListener({
+            val prov: ProcessCameraProvider = cameraProvider.get()
+            bindPreview(prov)
+        }, ContextCompat.getMainExecutor(requireContext()))
+    }
+    private fun bindPreview(prov: ProcessCameraProvider)   {
+        prov.unbindAll()
+        val preview = Preview.Builder()
+            .build()
+        val cameraSelector =
+            CameraSelector.Builder().requireLensFacing(CameraLens)
+                .build()
+        val surface: Preview.SurfaceProvider =
+            CameraPreview.createSurfaceProvider(camera?.cameraInfo)
+        preview.setSurfaceProvider(surface)
+        imageCapture = view?.display?.let {
+            ImageCapture.Builder()
+                .setFlashMode(ImageCapture.FLASH_MODE_ON)
+                .setTargetAspectRatio(AspectRatio.RATIO_16_9) // width:height
+                .setTargetRotation(it.rotation)
+                .build()
+        }
+        camera = prov.bindToLifecycle(viewLifecycleOwner, cameraSelector, preview, imageCapture)
     }
 }
