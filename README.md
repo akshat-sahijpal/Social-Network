@@ -34,6 +34,10 @@ This app uses [***MVVM (Model View View-Model)***](https://developer.android.com
 | Auth | Auth | 
 | ![First](https://user-images.githubusercontent.com/80918746/135666196-46d4e5f1-4bc3-4b8a-89f4-a592d0c1425c.png) | ![Sec](https://user-images.githubusercontent.com/80918746/135666256-4aee9312-d1c5-46ff-801c-b7e0e2e57a82.png) |
  
+# Demo
+| Demo Video |
+|:-:|
 
- 
+
+https://user-images.githubusercontent.com/80918746/135727419-5d69cdbb-b84f-41b8-b4c8-2a6c425931d9.mp4
 
