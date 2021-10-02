@@ -176,6 +176,6 @@ class PostCreationFragment : Fragment() {
         navController.popBackStack()
     }
     private fun generateImageFromCamera() {
-        Toast.makeText(requireContext(), "Click Click", Toast.LENGTH_SHORT).show()
+
     }
 }
