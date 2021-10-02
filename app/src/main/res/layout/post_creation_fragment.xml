@@ -140,7 +140,7 @@
                 <EditText
                     android:id="@+id/mainPara"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:layout_marginEnd="15dp"
                     android:background="@null"
@@ -148,6 +148,29 @@
                     android:fontFamily="@font/amiko_semibold"
                     android:gravity="start"
                     android:hint="@string/question" />
+
+                <androidx.camera.view.PreviewView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:id="@+id/CameraPreview"
+                    android:visibility="gone"
+                    >
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="16dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:id="@+id/ImageCaptureCameraButton"
+                            android:src="@drawable/ic_baseline_photo_camera_24"
+                            app:layout_constraintHorizontal_bias="0.498"
+                            app:layout_constraintStart_toStartOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.camera.view.PreviewView>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

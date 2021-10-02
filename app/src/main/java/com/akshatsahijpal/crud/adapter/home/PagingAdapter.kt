@@ -1,5 +1,6 @@
 package com.akshatsahijpal.crud.adapter.home
 
+import android.opengl.Visibility
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +16,6 @@ import com.akshatsahijpal.crud.R
 import com.akshatsahijpal.crud.data.PostFeedData
 import com.akshatsahijpal.crud.databinding.PostArchitectureBinding
 import com.akshatsahijpal.crud.util.Constants
-import com.bumptech.glide.Glide
 import com.squareup.picasso.Picasso
 
 class PagingAdapter constructor(itemClk: ItemClickListener) :
@@ -51,11 +51,13 @@ class PagingAdapter constructor(itemClk: ItemClickListener) :
                 it.uploadTime.text = post.postUploadTime
                 it.mainPostParagraph.text = post.postMainParagraph
                 Picasso.get().load(post.postProfilePicture).into(it.profilePicture)
-                if (post.postAddPhoto != null) {
+                var phot = post.postAddPhoto
+                Log.d("Displaying this image->", "${phot}")
+                if (phot != null) {
                     it.PostImage.isVisible = true
-                   Picasso.get().load(post.postAddPhoto).into(it.PostImage)
+                    Picasso.get().load(phot.trim()).into(it.PostImage)
                     Log.d("Displaying this image->", "${post.postAddPhoto}")
-                //    Glide.with(_bind.root).load(post.postAddPhoto).centerCrop().into(it.PostImage)
+                    //    Glide.with(_bind.root).load(post.postAddPhoto).centerCrop().into(it.PostImage)
                 }
                 if (post.postProfilePicture == null) {
                     Picasso.get().load(Constants.DefaultProfilePhoto).into(it.profilePicture)
