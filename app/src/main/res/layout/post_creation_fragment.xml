@@ -76,10 +76,11 @@
                     app:civ_border_color="#FF000000"
                     app:civ_border_width="2dp" />
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/imageForPostFromCamera"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:background="@color/black"
                     android:layout_gravity="center|center_horizontal"
                     android:layout_marginTop="50dp"
                     android:src="@drawable/ic_baseline_add_a_photo_24" />
@@ -93,10 +94,11 @@
                     android:text="Take Photo"
                     android:textSize="15dp" />
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/imageForPostFromGallery"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:background="@color/black"
                     android:layout_gravity="center|center_horizontal"
                     android:layout_marginTop="50dp"
                     android:src="@drawable/ic_baseline_photo_album_24" />
@@ -107,6 +109,27 @@
                     android:layout_gravity="center|center_horizontal"
                     android:fontFamily="@font/amaranth_bold"
                     android:text="Gallery"
+                    android:textColor="@color/white"
+                    android:textSize="15dp" />
+
+                <ImageButton
+                    android:id="@+id/imageCaptureBTN"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:visibility="invisible"
+                    android:background="@color/black"
+                    android:layout_gravity="center|center_horizontal"
+                    android:layout_marginTop="50dp"
+                    android:src="@drawable/ic_baseline_linked_camera_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:visibility="invisible"
+                    android:id="@+id/textCapture"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|center_horizontal"
+                    android:fontFamily="@font/amaranth_bold"
+                    android:text="Capture"
                     android:textColor="@color/white"
                     android:textSize="15dp" />
 
@@ -152,25 +175,8 @@
                 <androidx.camera.view.PreviewView
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    android:id="@+id/CameraPreview"
                     android:visibility="gone"
-                    >
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <com.google.android.material.floatingactionbutton.FloatingActionButton
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_marginBottom="16dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            android:id="@+id/ImageCaptureCameraButton"
-                            android:src="@drawable/ic_baseline_photo_camera_24"
-                            app:layout_constraintHorizontal_bias="0.498"
-                            app:layout_constraintStart_toStartOf="parent" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </androidx.camera.view.PreviewView>
+                    android:id="@+id/CameraPreview2323"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
