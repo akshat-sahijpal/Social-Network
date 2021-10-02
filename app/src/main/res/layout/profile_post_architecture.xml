@@ -2,11 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:elevation="40dp"
-    app:cardCornerRadius="30dp"
-    android:layout_marginStart="20dp"
-    android:layout_marginEnd="20dp"
-    android:layout_marginTop="10dp"
+    android:backgroundTint="@color/black"
     android:layout_height="wrap_content"
     android:orientation="vertical">
     <LinearLayout
@@ -43,8 +39,8 @@
                     android:fontFamily="@font/amaranth_bold"
                     android:padding="2dp"
                     android:text="Profile Name"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
+                    android:textColor="@color/main_title"
+                    android:textSize="22sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -53,6 +49,7 @@
                     android:layout_height="wrap_content"
                     android:ellipsize="marquee"
                     android:maxLines="1"
+                    android:textColor="@color/login_ui"
                     android:text="1h"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -71,7 +68,7 @@
                 android:layout_marginEnd="20dp"
                 android:fontFamily="@font/acme"
                 android:padding="10dp"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:text="@string/five_centuries"
                 android:textSize="22sp" />
             <com.google.android.material.card.MaterialCardView
@@ -96,4 +93,8 @@
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"/>
 </androidx.cardview.widget.CardView>
