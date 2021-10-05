@@ -36,7 +36,7 @@ import java.io.File
 import java.util.*
 import android.media.MediaScannerConnection
 import android.media.MediaScannerConnection.OnScanCompletedListener
-
+import androidx.core.net.toUri
 
 @AndroidEntryPoint
 class PostCreationFragment : Fragment() {
@@ -250,21 +250,10 @@ class PostCreationFragment : Fragment() {
             object : ImageCapture.OnImageSavedCallback {
                 override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
                     val imagePath = File(requireActivity().externalCacheDir!!.absolutePath)
-                    Toast.makeText(
-                        requireContext(),
-                        "Image Saved ${requireActivity().externalCacheDir!!.absolutePath}",
-                        Toast.LENGTH_LONG
-                    ).show()
-                    MediaScannerConnection.scanFile(requireContext(), arrayOf(imagePath.absolutePath), null
-                    ) { _, uri ->
-                        Log.i("onScanCompleted",
-                            uri.path!!)
-                        CapturedImageFromCameraURI = uri
-                    }
-                    CapturedImageFromCameraURI = outputFileResults.savedUri
+                    Toast.makeText(requireContext(), "Image Saved At: ${imagePath.toUri()}", Toast.LENGTH_LONG).show()
+                    CapturedImageFromCameraURI = imagePath.toUri()
                     CapturedImageFromCameraURI?.let { uploadImageOnDB(it) }
-                    Log.d("TAG",
-                        "onImageSaved:  ${requireActivity().externalCacheDir!!.absolutePath}")
+                    Log.d("TAG", "onImageSaved:  ${requireActivity().externalCacheDir!!.absolutePath}")
                 }
                 override fun onError(exception: ImageCaptureException) {
                     Toast.makeText(
