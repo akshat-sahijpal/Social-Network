@@ -26,18 +26,15 @@ This app uses [***MVVM (Model View View-Model)***](https://developer.android.com
 
 ![](https://developer.android.com/topic/libraries/architecture/images/final-architecture.png)
 # App 
-| Home | Profile | ImagePost
-|:-:|:-:|
 | ![Third](https://user-images.githubusercontent.com/80918746/135667016-a6ba8901-5f78-4c4c-9f68-504365b2b5b9.png) | ![Fourth](https://user-images.githubusercontent.com/80918746/135667060-9d6a3b9e-5285-40ea-aec4-f7ddcb3eed64.png) |
-| InApp Camera | Image Post | 
-| ![Third](https://user-images.githubusercontent.com/80918746/135727192-6e8bc0c8-9fc1-4622-8c05-af9449bf814d.png) | ![Fourth](https://user-images.githubusercontent.com/80918746/135667277-30199145-7d6b-4617-9e31-88026c239779.png) | 
-| Auth | Auth | 
+| ![Third](https://user-images.githubusercontent.com/80918746/135727192-6e8bc0c8-9fc1-4622-8c05-af9449bf814d.png) | ![Fourth](https://user-images.githubusercontent.com/80918746/135667277-30199145-7d6b-4617-9e31-88026c239779.png) |  
 | ![First](https://user-images.githubusercontent.com/80918746/135666196-46d4e5f1-4bc3-4b8a-89f4-a592d0c1425c.png) | ![Sec](https://user-images.githubusercontent.com/80918746/135666256-4aee9312-d1c5-46ff-801c-b7e0e2e57a82.png) |
-| Post Image |
 | ![Five](https://user-images.githubusercontent.com/80918746/135985286-cc4aaba9-929b-4887-9c5d-28847e2932a8.jpg) | 
+ 
  
 # Demo
 | Demo Video |
 |:-:|
+
 https://user-images.githubusercontent.com/80918746/135727419-5d69cdbb-b84f-41b8-b4c8-2a6c425931d9.mp4
 
