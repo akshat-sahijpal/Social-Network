@@ -264,8 +264,16 @@ class PostCreationFragment : Fragment() {
             ContextCompat.getMainExecutor(requireContext()),
             object : ImageCapture.OnImageSavedCallback {
                 override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
-                    val imagePath = File(requireActivity().externalCacheDir!!.absolutePath)
+                    val imagePath = requireActivity().externalCacheDir
                     val uriConverter = fileToUriConverter()
+                    if (imagePath == null) {
+                        Toast.makeText(
+                            requireContext(),
+                            "No Image path found",
+                            Toast.LENGTH_LONG
+                        ).show()
+                        return
+                    }
                     Toast.makeText(
                         requireContext(),
                         "Image Saved At: ${imagePath.toUri()}",
@@ -275,9 +283,10 @@ class PostCreationFragment : Fragment() {
                     capturedImageFromCameraURI?.let { uploadImageOnDB(it) }
                     Log.d(
                         "TAG",
-                        "onImageSaved:  ${requireActivity().externalCacheDir!!.absolutePath}"
+                        "onImageSaved:  ${imagePath.absolutePath}"
                     )
                 }
+
                 override fun onError(exception: ImageCaptureException) {
                     Toast.makeText(
                         requireContext(),
