@@ -8,7 +8,7 @@ It simply uses firebase as a backend and performs authentication and storage ope
 
 ## Features :
 
-- **Write About Anything ** - Convey your feelings, thoughts in form of a post 
+- **Write About Anything** - Convey your feelings, thoughts in form of a post 
 - **Delete/Update Post** - Delete/Update Posts easily.
 - **Camera Photos** - You can open camera inside the application, click and upload the photo with a post.
 - **Add Image from gallery** - Add Images in Post to keep it Awesome.
