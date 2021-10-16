@@ -2,6 +2,49 @@
 Social Network is a social media app, where a user can publicly talk about any particular topic be it via text or voice chat.
 # About
 It simply uses firebase as a backend and performs authentication and storage operations on firebase itself, a user simply authenticates his/her google account and gets inside the whole network. Further, the user can post about something in text format or image format. Also, a user has a profile and can view others people profile too can follow others etc.
+
+#### This is a Beginner Friendly Repository made for Open Source Enthusiasts who can contribute to the App. 
+#### To contribute in this project, you can update the existing applications.
+
+## Features :
+
+- **Write About Anything ** - Convey your feelings, thoughts in form of a post 
+- **Delete/Update Post** - Delete/Update Posts easily.
+- **Camera Photos** - You can open camera inside the application, click and upload the photo with a post.
+- **Add Image from gallery** - Add Images in Post to keep it Awesome.
+- **Profiles** - Visit any user profile and connect(follow) with them .
+- **Voice Channel [Beta]** - Voice chat with anyone.
+
+### Contributing
+###### You can star ⭐ and fork 🍽️ this repository on GitHub by navigating at the top of this repository.
+
+## Getting Started
+* Fork it.
+
+* Clone your forked repo and move inside it:
+
+`git clone https://github.com/akshat-sahijpal/Social-Network.git && cd SocialNet`
+
+* Checkout to a new branch to work on an issue:
+
+`git checkout -b my-amazing-feature`
+
+* Running the project
+
+`open the project in Android Studio and run!`
+<br/>
+
+* Once you're all done coding, it's time to open a PR :)
+Run the following commands from the root of the project directory:
+
+`git add .`
+
+`git commit -m "A short description about the feature."`
+
+`git push origin <my-amazing-feature>`
+
+Open your forked repo in your browser and then raise a PR to the `master` branch of this repository!
+
 # Built With 🛠
 - [Kotlin](https://kotlinlang.org/) - First class and official programming language for Android development.
 - [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - For asynchronous and more..
