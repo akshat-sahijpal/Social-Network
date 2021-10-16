@@ -124,16 +124,16 @@
 
       </RelativeLayout>
     </LinearLayout>
-   <com.google.android.material.button.MaterialButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="51dp"
-       app:cornerRadius="10dp"
-       android:elevation="10dp"
-       android:backgroundTint="@color/white"
+        app:cornerRadius="10dp"
+        android:elevation="10dp"
+        android:backgroundTint="@color/white"
         android:layout_marginTop="12dp"
-       android:text="Connect"
-       android:textColor="@color/black"
+        android:text="Connect"
+        android:textColor="@color/black"
         android:layout_marginEnd="15dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
