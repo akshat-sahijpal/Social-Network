@@ -34,9 +34,8 @@ import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
 import java.util.*
-import android.media.MediaScannerConnection
-import android.media.MediaScannerConnection.OnScanCompletedListener
 import androidx.core.net.toUri
+import com.akshatsahijpal.crud.internal.fileToUriConverter
 
 @AndroidEntryPoint
 class PostCreationFragment : Fragment() {
@@ -45,11 +44,11 @@ class PostCreationFragment : Fragment() {
     private var imageURI: Uri? = null
     private var camera: Camera? = null
     private var imageCapture: ImageCapture? = null
-    private var CapturedImageFromCameraURI: Uri? = null
+    private var capturedImageFromCameraURI: Uri? = null
     private var photoPostURL: String? = null
-    private lateinit var CameraPreview: PreviewView
+    private lateinit var cameraPreview: PreviewView
     private lateinit var cameraProvider: ListenableFuture<ProcessCameraProvider>
-    private var CameraLens: Int = CameraSelector.LENS_FACING_BACK
+    private var cameraLens: Int = CameraSelector.LENS_FACING_BACK
     private var storageRef: StorageReference =
         FirebaseStorage.getInstance().getReference("PostImages")
     private val model by viewModels<PostCreationViewModel>()
@@ -57,62 +56,68 @@ class PostCreationFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         _binding = PostCreationFragmentBinding.inflate(inflater, container, false)
         return _binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var account = GoogleSignIn.getLastSignedInAccount(requireContext())
+        val account = GoogleSignIn.getLastSignedInAccount(requireContext())
         navController = Navigation.findNavController(view)
-        _binding.apply {
-            userNameOn.text = account.displayName
-            imageForPostFromGallery.setOnClickListener { fetchImageFromGallery() }
-            imageForPostFromCamera.setOnClickListener { startCameraForImage() }
-            Picasso.get().load(account.photoUrl).into(profilePictureOfUser)
-            if (account.photoUrl == null) {
-                Picasso.get().load(Constants.DefaultProfilePhoto).into(profilePictureOfUser)
-            }
-            closeWindowButton.setOnClickListener { closeWindow() }
-            postButton.setOnClickListener {
-                var postText = mainPara.text.toString()
-                when (postText) {
-                    null -> postButton.isEnabled = false
-                    else -> postButton.isEnabled = true
+        if (account != null) {
+            _binding.apply {
+                userNameOn.text = account.displayName
+                imageForPostFromGallery.setOnClickListener { fetchImageFromGallery() }
+                imageForPostFromCamera.setOnClickListener { startCameraForImage() }
+                Picasso.get().load(account.photoUrl).into(profilePictureOfUser)
+                if (account.photoUrl == null) {
+                    Picasso.get().load(Constants.DefaultProfilePhoto).into(profilePictureOfUser)
                 }
-                postButtonImpl(postText, Calendar.getInstance().time, account)
+                closeWindowButton.setOnClickListener { closeWindow() }
+                postButton.setOnClickListener {
+                    val postText = mainPara.text.toString()
+                    when (postText) {
+                        null -> postButton.isEnabled = false
+                        else -> postButton.isEnabled = true
+                    }
+                    postButtonImpl(postText, Calendar.getInstance().time, account)
+                }
             }
         }
     }
 
     private fun postButtonImpl(postText: String, time: Date, account: GoogleSignInAccount) {
         // Upload this data on net
-        var uplData = PostFeedData(account.displayName,
+        val uplData = PostFeedData(
+            account.displayName,
             account.givenName,
             time.toString(),
-            if (account.photoUrl != null) account.photoUrl.toString() else Constants.DefaultProfilePhoto,
+            if (account.photoUrl != null) account.photoUrl?.toString() else Constants.DefaultProfilePhoto,
             postText,
             photoPostURL,
             23,
             323,
-            23)
+            23
+        )
         model.uploadData(uplData)
         model.liveData.observe(viewLifecycleOwner) {
             Toast.makeText(requireContext(), "vak => $it", Toast.LENGTH_LONG).show()
             if (it != null) {
                 closeWindow()
             } else {
-                Toast.makeText(requireContext(),
+                Toast.makeText(
+                    requireContext(),
                     "Something went horribly wrong ",
-                    Toast.LENGTH_LONG).show()
+                    Toast.LENGTH_LONG
+                ).show()
             }
         }
     }
 
     private fun startCameraForImage() {
         _binding.CameraPreview2323.isVisible = true
-        CameraPreview = _binding.CameraPreview2323
+        cameraPreview = _binding.CameraPreview2323
         // First ask for camera permissions
         if (ContextCompat.checkSelfPermission(
                 requireContext(),
@@ -140,7 +145,11 @@ class PostCreationFragment : Fragment() {
         } else if (requestCode == Permission_broker
             && grantResults[0] == PackageManager.PERMISSION_DENIED
         ) {
-            Toast.makeText(requireContext(), "Camera Won't work if not permitted", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                requireContext(),
+                "Camera Won't work if not permitted",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
@@ -187,24 +196,28 @@ class PostCreationFragment : Fragment() {
     }
 
     private fun uploadImageOnDB(capturedImageFromCameraURI: Uri) {
-        val fileReference = storageRef.child("${UUID.randomUUID()}.${getImageCapturedExtension(capturedImageFromCameraURI)}")
+        val fileReference = storageRef.child(
+            "${UUID.randomUUID()}.${
+                getImageCapturedExtension(capturedImageFromCameraURI)
+            }"
+        )
         fileReference.putFile(capturedImageFromCameraURI)
-                .addOnSuccessListener { result ->
-                    val res = result.storage.downloadUrl
-                    res.addOnSuccessListener {
-                        _binding.progressBarForPhoto.isVisible = false
-                        photoPostURL = res.result.toString()
-                        _binding.postButton.isEnabled = true
-                    }
-                }.addOnFailureListener { exec ->
-                    Toast.makeText(requireContext(), "Failed To Upload $exec", Toast.LENGTH_LONG)
-                        .show()
-                }.addOnProgressListener { snap ->
-                    val progress = (100 * snap.bytesTransferred / snap.totalByteCount)
-                    _binding.progressBarForPhoto.isVisible = true
-                    _binding.progressBarForPhoto.progress = progress.toInt()
-                    _binding.postButton.isEnabled = false
+            .addOnSuccessListener { result ->
+                val res = result.storage.downloadUrl
+                res.addOnSuccessListener {
+                    _binding.progressBarForPhoto.isVisible = false
+                    photoPostURL = res.result.toString()
+                    _binding.postButton.isEnabled = true
                 }
+            }.addOnFailureListener { exec ->
+                Toast.makeText(requireContext(), "Failed To Upload $exec", Toast.LENGTH_LONG)
+                    .show()
+            }.addOnProgressListener { snap ->
+                val progress = (100 * snap.bytesTransferred / snap.totalByteCount)
+                _binding.progressBarForPhoto.isVisible = true
+                _binding.progressBarForPhoto.progress = progress.toInt()
+                _binding.postButton.isEnabled = false
+            }
 
     }
 
@@ -238,10 +251,12 @@ class PostCreationFragment : Fragment() {
     }
 
     private fun captureImage() {
-        var photoFile =
-            File(requireActivity().externalMediaDirs.firstOrNull(),
-                "CapturePro-${System.currentTimeMillis()}.jpg")
-        var imageOptions: ImageCapture.OutputFileOptions = ImageCapture.OutputFileOptions.Builder(
+        val photoFile =
+            File(
+                requireActivity().externalMediaDirs.firstOrNull(),
+                "CapturePro-${System.currentTimeMillis()}.jpg"
+            )
+        val imageOptions: ImageCapture.OutputFileOptions = ImageCapture.OutputFileOptions.Builder(
             photoFile
         ).build()
         imageCapture?.takePicture(
@@ -250,10 +265,18 @@ class PostCreationFragment : Fragment() {
             object : ImageCapture.OnImageSavedCallback {
                 override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
                     val imagePath = File(requireActivity().externalCacheDir!!.absolutePath)
-                    Toast.makeText(requireContext(), "Image Saved At: ${imagePath.toUri()}", Toast.LENGTH_LONG).show()
-                    CapturedImageFromCameraURI = imagePath.toUri()
-                    CapturedImageFromCameraURI?.let { uploadImageOnDB(it) }
-                    Log.d("TAG", "onImageSaved:  ${requireActivity().externalCacheDir!!.absolutePath}")
+                    val uriConverter = fileToUriConverter()
+                    Toast.makeText(
+                        requireContext(),
+                        "Image Saved At: ${imagePath.toUri()}",
+                        Toast.LENGTH_LONG
+                    ).show()
+                    capturedImageFromCameraURI = uriConverter.convert(imagePath)
+                    capturedImageFromCameraURI?.let { uploadImageOnDB(it) }
+                    Log.d(
+                        "TAG",
+                        "onImageSaved:  ${requireActivity().externalCacheDir!!.absolutePath}"
+                    )
                 }
                 override fun onError(exception: ImageCaptureException) {
                     Toast.makeText(
@@ -278,10 +301,10 @@ class PostCreationFragment : Fragment() {
         val preview = Preview.Builder()
             .build()
         val cameraSelector =
-            CameraSelector.Builder().requireLensFacing(CameraLens)
+            CameraSelector.Builder().requireLensFacing(cameraLens)
                 .build()
         val surface: Preview.SurfaceProvider =
-            CameraPreview.createSurfaceProvider(camera?.cameraInfo)
+            cameraPreview.createSurfaceProvider(camera?.cameraInfo)
         preview.setSurfaceProvider(surface)
         imageCapture = view?.display?.let {
             ImageCapture.Builder()
