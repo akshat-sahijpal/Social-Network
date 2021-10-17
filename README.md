@@ -81,3 +81,10 @@ This app uses [***MVVM (Model View View-Model)***](https://developer.android.com
 
 https://user-images.githubusercontent.com/80918746/135727419-5d69cdbb-b84f-41b8-b4c8-2a6c425931d9.mp4
 
+
+<br />
+
+![](https://komarev.com/ghpvc/?username=akshat-sahijpal&style=flat-square)
+
+<br />
+
