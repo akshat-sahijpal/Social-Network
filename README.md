@@ -23,11 +23,11 @@ It simply uses firebase as a backend and performs authentication and storage ope
 
 * Clone your forked repo and move inside it:
 
-`git clone https://github.com/akshat-sahijpal/Social-Network.git && cd SocialNet`
+     `git clone https://github.com/akshat-sahijpal/Social-Network.git && cd SocialNet`
 
 * Checkout to a new branch to work on an issue:
 
-`git checkout -b my-amazing-feature`
+      `git checkout -b my-amazing-feature`
 
 * Running the project
 
@@ -37,13 +37,13 @@ It simply uses firebase as a backend and performs authentication and storage ope
 * Once you're all done coding, it's time to open a PR :)
 Run the following commands from the root of the project directory:
 
-`git add .`
+      `git add .`
 
-`git commit -m "A short description about the feature."`
+      `git commit -m "A short description about the feature."`
 
-`git push origin <my-amazing-feature>`
+      `git push origin <my-amazing-feature>`
 
-Open your forked repo in your browser and then raise a PR to the `master` branch of this repository!
+       Ope n your forked repo in your browser and then raise a PR to the `master` branch of this repository!
 
 # Built With 🛠
 - [Kotlin](https://kotlinlang.org/) - First class and official programming language for Android development.
