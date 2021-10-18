@@ -1,6 +1,8 @@
 package com.akshatsahijpal.crud.ui.fragments.home
 
 import android.os.Bundle
+import android.provider.Settings
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +15,7 @@ import androidx.navigation.Navigation
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.akshatsahijpal.crud.R
+import com.akshatsahijpal.crud.adapter.home.CheckClickerForPost
 import com.akshatsahijpal.crud.adapter.home.PagingAdapter
 import com.akshatsahijpal.crud.databinding.FragmentHomeFeedBinding
 import com.akshatsahijpal.crud.util.Constants
@@ -21,9 +24,12 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 
 @AndroidEntryPoint
-class HomeFeedFragment : Fragment(), PagingAdapter.ItemClickListener {
+class HomeFeedFragment : Fragment() {
     private lateinit var _binding: FragmentHomeFeedBinding
     val db = Firebase.firestore
     private lateinit var navController: NavController
@@ -39,18 +45,23 @@ class HomeFeedFragment : Fragment(), PagingAdapter.ItemClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        GlobalScope.launch {
+            Log.d("Result->", "Result: ${makeReq()}")
+        }
         var account = GoogleSignIn.getLastSignedInAccount(requireContext())
         navController = Navigation.findNavController(view)
         _binding.apply {
             Picasso.get().load(account.photoUrl).into(profilePicture)
-            if(account.photoUrl==null){
+            if (account.photoUrl == null) {
                 Picasso.get().load(Constants.DefaultProfilePhoto).into(profilePicture)
             }
             profilePicture.setOnClickListener {
                 navController.navigate(R.id.action_homeFeedFragment_to_profilePageFragment)
             }
             model.grabData()
-            var adapter = PagingAdapter(HomeFeedFragment())
+            var adapter = PagingAdapter(CheckClickerForPost {
+                navController.navigate(R.id.action_homeFeedFragment_to_expandedPostFragment)
+            })
             mainFeedRecycler.setHasFixedSize(true)
             mainFeedRecycler.adapter = adapter
             mainFeedRecycler.layoutManager = LinearLayoutManager(requireContext())
@@ -77,9 +88,5 @@ class HomeFeedFragment : Fragment(), PagingAdapter.ItemClickListener {
         }
     }
 
-    //suspend fun makeReq() = db.collection(Constants.POST).get().await().documents
-    override fun onItemClicked(position: Int) {
-        Toast.makeText(requireContext(), "for $position", Toast.LENGTH_LONG).show()
-        navController.navigate(R.id.action_homeFeedFragment_to_expandedPostFragment)
-    }
+    suspend fun makeReq() = db.collection(Constants.POST).get().await().documents
 }
