@@ -25,7 +25,7 @@ class HomeScreenRepository {
                 .get().await()
             snap.documents
         } catch (e: Exception) {
-            Log.d("Error ->>>>>>>>>>>>", e.toString())
+            Log.d("Error ->", e.toString())
             null
         }
     }

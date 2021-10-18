@@ -1,6 +1,8 @@
 package com.akshatsahijpal.crud.ui.fragments.home
 
 import android.os.Bundle
+import android.provider.Settings
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +23,9 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 
 @AndroidEntryPoint
 class HomeFeedFragment : Fragment(), PagingAdapter.ItemClickListener {
@@ -39,6 +44,9 @@ class HomeFeedFragment : Fragment(), PagingAdapter.ItemClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        GlobalScope.launch {
+             Log.d("Result->", "Result: ${makeReq()}")
+        }
         var account = GoogleSignIn.getLastSignedInAccount(requireContext())
         navController = Navigation.findNavController(view)
         _binding.apply {
@@ -77,7 +85,7 @@ class HomeFeedFragment : Fragment(), PagingAdapter.ItemClickListener {
         }
     }
 
-    //suspend fun makeReq() = db.collection(Constants.POST).get().await().documents
+    suspend fun makeReq() = db.collection(Constants.POST).get().await().documents
     override fun onItemClicked(position: Int) {
         Toast.makeText(requireContext(), "for $position", Toast.LENGTH_LONG).show()
         navController.navigate(R.id.action_homeFeedFragment_to_expandedPostFragment)
