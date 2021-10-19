@@ -1,4 +1,4 @@
-package com.akshatsahijpal.crud.internal
+package com.akshatsahijpal.crud.util
 
 import android.net.Uri
 import androidx.core.net.toUri

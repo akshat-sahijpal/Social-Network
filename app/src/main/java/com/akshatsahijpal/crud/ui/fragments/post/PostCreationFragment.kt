@@ -35,7 +35,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
 import java.util.*
 import androidx.core.net.toUri
-import com.akshatsahijpal.crud.internal.fileToUriConverter
+import com.akshatsahijpal.crud.util.fileToUriConverter
 
 @AndroidEntryPoint
 class PostCreationFragment : Fragment() {
