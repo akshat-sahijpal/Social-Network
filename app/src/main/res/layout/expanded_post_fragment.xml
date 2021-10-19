@@ -17,6 +17,7 @@
             <include
                 android:id="@+id/mainScope"
                 layout="@layout/post_architecture" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/CommentRecyclerView"
                 android:layout_width="match_parent"

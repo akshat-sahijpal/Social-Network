@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="@color/surface_color"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 <LinearLayout
@@ -24,52 +25,58 @@
     <androidx.cardview.widget.CardView
         android:elevation="20dp"
         android:layout_marginStart="10dp"
-        android:backgroundTint="@color/gray_comment"
+        android:backgroundTint="@color/card_color"
         android:layout_width="match_parent"
         app:cardCornerRadius="20dp"
         android:layout_height="wrap_content">
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="20dp"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/profileName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/amaranth_bold"
-            android:padding="2dp"
-            android:text="Profile Name"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/profileUserName"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ellipsize="marquee"
-            android:maxLines="1"
-            android:text="@string/profile_name"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/uploadTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="marquee"
-            android:maxLines="1"
-            android:text="@string/_1h"
-            android:textSize="16sp" />
-        <TextView
-            android:id="@+id/mainCommentText"
-            android:layout_width="wrap_content"
+            android:padding="10dp"
+            android:layout_marginStart="4dp"
             android:layout_marginEnd="20dp"
-            android:layout_height="wrap_content"
-            android:text="@string/dwe"
-            />
-    </LinearLayout>
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/profileName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/amaranth_bold"
+                android:padding="2dp"
+                android:text="Profile Name"
+                android:textColor="@color/main_title"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/profileUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="marquee"
+                android:maxLines="1"
+                android:text="@string/profile_name"
+                android:textColor="@color/login_ui"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/uploadTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="marquee"
+                android:maxLines="1"
+                android:text="@string/_1h"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/mainCommentText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:text="@string/dwe"
+                android:textColor="@color/white" />
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>
     <LinearLayout
@@ -87,7 +94,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="20dp"
                 android:src="@drawable/ic_baseline_thumb_up_24"
-                android:background="@color/white"
+                android:background="@color/surface_color"
                 />
         <ImageButton
             android:id="@+id/voiceSubCommentChannel"
@@ -98,7 +105,7 @@
             android:layout_marginStart="20dp"
             android:layout_gravity="center"
             android:src="@drawable/ic_baseline_keyboard_voice_24"
-            android:background="@color/white"
+            android:background="@color/surface_color"
             />
             <ImageButton
                 android:id="@+id/reportCommentButton"
@@ -109,7 +116,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_gravity="center"
                 android:src="@drawable/ic_baseline_outlined_flag_24"
-                android:background="@color/white"
+                android:background="@color/surface_color"
                 />
         </LinearLayout>
 </LinearLayout>
