@@ -20,7 +20,8 @@ class PostCreationViewModel @Inject constructor(
         viewModelScope.async {
             var ref = repo.upload(uplData)
             if(ref?.path!=null){
-                _liveData.value = ref?.path
+                repo.updateWithID(ref.path.split("/")[1])
+                _liveData.value = ref.path
             }
         }
     }
