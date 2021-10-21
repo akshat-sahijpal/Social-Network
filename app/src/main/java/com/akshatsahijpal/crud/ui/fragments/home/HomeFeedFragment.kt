@@ -12,6 +12,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.akshatsahijpal.crud.R
@@ -27,11 +29,12 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+import retrofit2.http.POST
 
 @AndroidEntryPoint
 class HomeFeedFragment : Fragment() {
     private lateinit var _binding: FragmentHomeFeedBinding
-    val db = Firebase.firestore
+    private val db = Firebase.firestore
     private lateinit var navController: NavController
     private val model by viewModels<HomeFeedViewModel>()
     override fun onCreateView(
@@ -48,7 +51,7 @@ class HomeFeedFragment : Fragment() {
         GlobalScope.launch {
             Log.d("Result->", "Result: ${makeReq()}")
         }
-        var account = GoogleSignIn.getLastSignedInAccount(requireContext())
+        val account = GoogleSignIn.getLastSignedInAccount(requireContext())
         navController = Navigation.findNavController(view)
         _binding.apply {
             Picasso.get().load(account.photoUrl).into(profilePicture)
@@ -59,8 +62,13 @@ class HomeFeedFragment : Fragment() {
                 navController.navigate(R.id.action_homeFeedFragment_to_profilePageFragment)
             }
             model.grabData()
-            var adapter = PagingAdapter(CheckClickerForPost {
-                navController.navigate(R.id.action_homeFeedFragment_to_expandedPostFragment)
+            val adapter = PagingAdapter(CheckClickerForPost {
+                val clickedID: String? =  it.documentID
+                if (clickedID != null) {
+                   var navi = HomeFeedFragmentDirections.actionHomeFeedFragmentToExpandedPostFragment(clickedID)
+                    findNavController().navigate(navi)
+                }
+                Toast.makeText(requireContext(), "Clicked:$clickedID", Toast.LENGTH_LONG).show()
             })
             mainFeedRecycler.setHasFixedSize(true)
             mainFeedRecycler.adapter = adapter

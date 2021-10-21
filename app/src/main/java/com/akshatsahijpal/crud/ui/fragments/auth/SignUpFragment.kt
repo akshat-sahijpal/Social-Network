@@ -21,8 +21,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import dagger.hilt.android.AndroidEntryPoint
-import java.io.PrintWriter
-import java.io.StringWriter
 
 @AndroidEntryPoint
 class SignUpFragment : Fragment() {
@@ -47,8 +45,7 @@ class SignUpFragment : Fragment() {
         _binding.apply {
             googleSignUpButton.setOnClickListener {
                 googleClient = GoogleSignIn.getClient(requireActivity(), setupSignInOptions())
-
-                      signInWithGoogle()
+                    signInWithGoogle()
             }
         }
     }
@@ -69,6 +66,7 @@ class SignUpFragment : Fragment() {
             val account: GoogleSignInAccount = task.getResult(ApiException::class.java)
             // Signed in successfully, show authenticated UI.
             Log.d(" Google Account ", account.toString())
+
             navController.navigate(R.id.action_signUpFragment_to_homeFeedFragment)
         } catch (e: ApiException) {
             // The ApiException status code indicates the detailed failure reason.
@@ -82,5 +80,4 @@ class SignUpFragment : Fragment() {
             .requestEmail()
             .build()
     }
-
 }

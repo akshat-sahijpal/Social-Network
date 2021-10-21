@@ -100,10 +100,13 @@ class PostCreationFragment : Fragment() {
             323,
             23
         )
+        _binding.progressBarForPhoto.isVisible = true
+        _binding.postButton.isEnabled = false
         model.uploadData(uplData)
         model.liveData.observe(viewLifecycleOwner) {
             Toast.makeText(requireContext(), "vak => $it", Toast.LENGTH_LONG).show()
             if (it != null) {
+                _binding.progressBarForPhoto.isVisible = false
                 closeWindow()
             } else {
                 Toast.makeText(
@@ -124,7 +127,6 @@ class PostCreationFragment : Fragment() {
                 android.Manifest.permission.CAMERA
             ) == PackageManager.PERMISSION_GRANTED
         ) {
-            //done
             generateImageFromCamera()
         } else {
             requestPermissions(arrayOf(android.Manifest.permission.CAMERA), Permission_broker)

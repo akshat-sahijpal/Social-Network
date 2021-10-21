@@ -11,12 +11,16 @@ import java.lang.Exception
 class PostCreationRepository {
     private val db = Firebase.firestore
     suspend fun upload(uplData: PostFeedData): DocumentReference? {
+         //db.collection(POST).document("POST")
         return try {
-
             db.collection(POST)
                 .add(uplData).await()
         }catch (e: Exception){
             null
         }
+    }
+
+     suspend fun updateWithID(uid: String) {
+        db.collection(POST).document(uid).update("documentID", uid).await()
     }
 }

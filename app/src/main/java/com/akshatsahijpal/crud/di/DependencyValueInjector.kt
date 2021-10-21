@@ -3,7 +3,9 @@ package com.akshatsahijpal.crud.di
 import android.content.Context
 import com.akshatsahijpal.crud.repository.login.UserRegisterRepository
 import com.akshatsahijpal.crud.repository.main.HomeScreenRepository
+import com.akshatsahijpal.crud.repository.post.ExpandedPostRepository
 import com.akshatsahijpal.crud.repository.post.PostCreationRepository
+import com.akshatsahijpal.crud.ui.fragments.auth.SignUpFragmentDirections
 import com.akshatsahijpal.crud.ui.fragments.profile.tabs.qa.repository.QuestionsAnsweredTabRepository
 import dagger.Module
 import dagger.Provides
@@ -30,4 +32,8 @@ object DependencyValueInjector {
     @Singleton
     @Provides
     fun provideQuestionsAnsweredTabRepository() = QuestionsAnsweredTabRepository()
+
+    @Singleton
+    @Provides
+    fun provideExpandedView() = ExpandedPostRepository()
 }

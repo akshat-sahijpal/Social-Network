@@ -9,5 +9,6 @@ data class PostFeedData(
     var postAddPhoto: String? = "",
     var postLikes: Int = 0,
     var postCommentNumbers: Int = 0,
-    var postSharesNumber: Int = 0
+    var postSharesNumber: Int = 0,
+    var documentID: String? = "default",
 )

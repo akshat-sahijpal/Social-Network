@@ -4,8 +4,8 @@ plugins {
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
     id 'com.google.gms.google-services'
+    id 'androidx.navigation.safeargs.kotlin'
 }
-
 android {
     compileSdk 30
 
@@ -15,7 +15,6 @@ android {
         targetSdk 30
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildFeatures {
@@ -100,6 +99,8 @@ dependencies {
     implementation "androidx.camera:camera-lifecycle:$camerax_version"
 // CameraX View class
     implementation "androidx.camera:camera-view:1.0.0-alpha10"
+    implementation "android.arch.navigation:navigation-fragment-ktx:1.0.0-alpha11"
+
 }
 kapt {
     correctErrorTypes true

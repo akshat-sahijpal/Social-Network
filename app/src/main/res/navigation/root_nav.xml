@@ -12,13 +12,19 @@
         <action
             android:id="@+id/action_homeFeedFragment_to_postCreationFragment"
             app:destination="@id/postCreationFragment"
+            app:enterAnim="@anim/slide_out_right"
+            app:exitAnim="@anim/slide_out_left"
             app:popUpTo="@id/postCreationFragment" />
         <action
             android:id="@+id/action_homeFeedFragment_to_expandedPostFragment"
-            app:destination="@id/expandedPostFragment" />
+            app:destination="@id/expandedPostFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
         <action
             android:id="@+id/action_homeFeedFragment_to_profilePageFragment"
-            app:destination="@id/profilePageFragment" />
+            app:destination="@id/profilePageFragment"
+            app:enterAnim="@anim/slide_out_right"
+            app:exitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/postCreationFragment"
@@ -32,7 +38,12 @@
         tools:layout="@layout/expanded_post_fragment" >
         <action
             android:id="@+id/action_expandedPostFragment_to_profilePageFragment"
-            app:destination="@id/profilePageFragment" />
+            app:destination="@id/profilePageFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+        <argument
+            android:name="uid"
+            app:argType="string"/>
     </fragment>
     <fragment
         android:id="@+id/profilePageFragment"
@@ -46,10 +57,12 @@
         tools:layout="@layout/fragment_sign_up" >
         <action
             android:id="@+id/action_signUpFragment_to_homeFeedFragment"
-            app:destination="@id/homeFeedFragment" />
+            app:destination="@id/homeFeedFragment"
+            app:enterAnim="@anim/slide_in_right" />
         <action
             android:id="@+id/action_signUpFragment_to_userRegistrationFragment"
-            app:destination="@id/userRegistrationFragment" />
+            app:destination="@id/userRegistrationFragment"
+            app:enterAnim="@anim/slide_in_right" />
     </fragment>
     <fragment
         android:id="@+id/userRegistrationFragment"
