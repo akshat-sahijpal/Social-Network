@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/card_color"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal">
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/profilePictureForComment"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:src="@drawable/default_profile_picture"
+        app:civ_border_color="#FF000000"
+        app:civ_border_width="2dp" />
+    <EditText
+        android:layout_width="250dp"
+        android:layout_margin="10dp"
+        android:id="@+id/mainCommentContentForThePost"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/white"
+        android:textColor="@color/main_title"
+        android:fontFamily="@font/amiko_semibold"
+        android:hint="Write your thoughts"
+        android:layout_weight="2" />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        app:cornerRadius="20dp"
+        android:id="@+id/CommentButtonForPost"
+        android:backgroundTint="@color/black"
+        android:layout_height="40dp"
+        android:fontFamily="@font/amiko_semibold"
+        android:textColor="@color/white"
+        android:layout_margin="10dp"
+        android:textAllCaps="false"
+        android:text="Comment" />
+</LinearLayout>

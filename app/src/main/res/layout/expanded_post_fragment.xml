@@ -9,8 +9,9 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
+            android:orientation="vertical"
             android:layout_height="wrap_content"
             android:descendantFocusability="blocksDescendants">
 
@@ -18,12 +19,16 @@
                 android:id="@+id/mainScope"
                 layout="@layout/post_architecture" />
 
+            <include
+                android:id="@+id/commentScope"
+                layout="@layout/comment_layout" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/CommentRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/mainScope"
                 tools:listitem="@layout/comment_architecture" />
-        </RelativeLayout>
+        </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </LinearLayout>
