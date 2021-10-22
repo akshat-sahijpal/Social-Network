@@ -8,30 +8,22 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.akshatsahijpal.crud.R
 import com.akshatsahijpal.crud.data.CommentArchitectureData
+import com.akshatsahijpal.crud.data.CommentData
 import com.akshatsahijpal.crud.databinding.CommentArchitectureBinding
 
-class CommentRecyclerAdapter constructor(private val demo: List<CommentArchitectureData>) :
+class CommentRecyclerAdapter constructor(private val demo: List<CommentData>) :
     RecyclerView.Adapter<CommentRecyclerAdapter.Holder>() {
-    private lateinit var navController: NavController
 
     inner class Holder(var commentView: CommentArchitectureBinding) :
         RecyclerView.ViewHolder(commentView.root) {
-        fun bind(comment: CommentArchitectureData) {
+        fun bind(comment: CommentData) {
             commentView.apply {
-                profileName.text = comment.profileName
-                profileUserName.text = comment.userName
-                mainCommentText.text = comment.commentText
+                profileName.text = comment.profileUserName
+                profileUserName.text = comment.profileUserName
+                mainCommentText.text = comment.mainCommentContent
                 uploadTime.text = comment.commentTime
-                profilePicture.setOnClickListener {
-                    onPictureClicked(commentView.root, comment)
-                }
             }
         }
-    }
-
-    private fun onPictureClicked(root: LinearLayout, comment: CommentArchitectureData) {
-        navController = Navigation.findNavController(root)
-        navController.navigate(R.id.action_expandedPostFragment_to_profilePageFragment)
     }
 
     override fun getItemCount(): Int {
