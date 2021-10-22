@@ -17,6 +17,7 @@
         android:theme="@style/Theme.Crud">
         <activity
             android:name=".MainActivity"
+            android:windowSoftInputMode="adjustResize|stateAlwaysVisible"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

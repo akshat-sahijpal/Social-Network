@@ -11,4 +11,5 @@ data class PostFeedData(
     var postCommentNumbers: Int = 0,
     var postSharesNumber: Int = 0,
     var documentID: String? = "default",
+    var commentIDs: List<String>? = listOf()
 )
