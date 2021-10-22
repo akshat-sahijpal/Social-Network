@@ -1,7 +1,6 @@
 package com.akshatsahijpal.crud.ui.fragments.post
 
 import android.os.Bundle
-import android.provider.SyncStateContract
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -12,10 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.akshatsahijpal.crud.adapter.comment.CommentListAdapter
-import com.akshatsahijpal.crud.adapter.comment.CommentRecyclerAdapter
-import com.akshatsahijpal.crud.data.CommentArchitectureData
 import com.akshatsahijpal.crud.data.CommentData
-import com.akshatsahijpal.crud.data.PostFeedData
 import com.akshatsahijpal.crud.databinding.ExpandedPostFragmentBinding
 import com.akshatsahijpal.crud.util.Constants
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -59,6 +55,7 @@ class ExpandedPostFragment : Fragment() {
                 if (data.postProfilePicture == null) {
                     Picasso.get().load(Constants.DefaultProfilePhoto).into(mainScope.profilePicture)
                 }
+                val adapter = CommentListAdapter()
                 commentScope.CommentButtonForPost.setOnClickListener {
                     if (!commentScope.mainCommentContentForThePost.text.equals(" ")) {
                         val account = GoogleSignIn.getLastSignedInAccount(requireContext())
@@ -72,10 +69,10 @@ class ExpandedPostFragment : Fragment() {
                         model.listenCommentData().observe(viewLifecycleOwner) {
                             model.updatePostWithCommentRef(it, args.uid)
                         }
+                        adapter.notifyDataSetChanged()
                         commentScope.mainCommentContentForThePost.setText("")
                     }
                 }
-                val adapter = CommentListAdapter()
                 model.getCommentIDs(args.uid)
                 model.watchCommentIDs().observe(viewLifecycleOwner) { listOfData ->
                     adapter.submitList(listOfData)
