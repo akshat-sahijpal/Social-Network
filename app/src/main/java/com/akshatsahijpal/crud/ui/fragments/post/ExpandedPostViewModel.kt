@@ -16,6 +16,8 @@ class ExpandedPostViewModel @Inject constructor(
     private var repo: ExpandedPostRepository
 ) : ViewModel() {
     private var _data: MutableLiveData<PostFeedData> = MutableLiveData()
+    private var _commentViewData: MutableLiveData<List<CommentData>> = MutableLiveData()
+    private var commentViewData: LiveData<List<CommentData>> = _commentViewData
     private var _commentData: MutableLiveData<String> = MutableLiveData()
     private var commentData: LiveData<String> = _commentData
 
@@ -38,4 +40,11 @@ class ExpandedPostViewModel @Inject constructor(
             repo.PostWithCommentRef(it, uid)
         }
     }
+
+    fun getCommentIDs(uid: String) {
+        viewModelScope.launch {
+            _commentViewData.value = repo.getCommentData(uid)
+        }
+    }
+    fun watchCommentIDs() = commentViewData
 }

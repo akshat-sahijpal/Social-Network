@@ -21,4 +21,18 @@ class ExpandedPostRepository {
     suspend fun PostWithCommentRef(it: String?, uid:String) {
         db.collection(Constants.POST).document(uid).update("commentIDs", FieldValue.arrayUnion(it)).await()
     }
+
+    suspend fun getCommentData(uid: String):
+            MutableList<CommentData> {
+        val snap = db.collection(Constants.POST)
+            .document(uid)
+            .get().await().toObject(PostFeedData::class.java)
+        val dataSet = mutableListOf<CommentData>()
+        for (x in snap?.commentIDs!!){
+            db.collection(Constants.COMMENT).document(x)
+                .get().await()
+                .toObject(CommentData::class.java)?.let { dataSet.add(it) }
+        }
+        return dataSet
+    }
 }
