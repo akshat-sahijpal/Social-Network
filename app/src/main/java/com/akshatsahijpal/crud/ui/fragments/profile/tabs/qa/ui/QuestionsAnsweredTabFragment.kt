@@ -30,8 +30,10 @@ class QuestionsAnsweredTabFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var account = GoogleSignIn.getLastSignedInAccount(requireContext())
-        var query = account.displayName
-        model.searchAllPostFor(query)
+        var query = account?.displayName
+        if (query != null) {
+            model.searchAllPostFor(query)
+        }
         var adapter = QaAdapter()
         _binding.apply {
             SubRecyclerMA.adapter = adapter

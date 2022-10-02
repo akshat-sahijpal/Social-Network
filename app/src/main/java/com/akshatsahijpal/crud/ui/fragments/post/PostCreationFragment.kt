@@ -315,7 +315,7 @@ class PostCreationFragment : Fragment() {
             CameraSelector.Builder().requireLensFacing(cameraLens)
                 .build()
         val surface: Preview.SurfaceProvider =
-            cameraPreview.createSurfaceProvider(camera?.cameraInfo)
+            cameraPreview.surfaceProvider
         preview.setSurfaceProvider(surface)
         imageCapture = view?.display?.let {
             ImageCapture.Builder()

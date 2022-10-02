@@ -60,9 +60,9 @@ class ExpandedPostFragment : Fragment() {
                     if (!commentScope.mainCommentContentForThePost.text.equals(" ")) {
                         val account = GoogleSignIn.getLastSignedInAccount(requireContext())
                         val data = CommentData(
-                            account.photoUrl.toString(),
+                            account?.photoUrl.toString(),
                             Calendar.getInstance().time.toString(),
-                            account.displayName,
+                            account?.displayName,
                             commentScope.mainCommentContentForThePost.text.toString()
                         )
                         model.commentUploader(data)

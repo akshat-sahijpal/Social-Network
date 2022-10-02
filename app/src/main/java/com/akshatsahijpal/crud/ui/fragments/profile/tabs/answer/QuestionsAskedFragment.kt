@@ -25,7 +25,7 @@ class QuestionsAskedFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(QuestionsAskedViewModel::class.java)
+        viewModel = ViewModelProvider(this)[QuestionsAskedViewModel::class.java]
         // TODO: Use the ViewModel
     }
 

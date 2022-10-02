@@ -38,7 +38,7 @@ class UserRegistrationFragment : Fragment() {
                         .show()
                     return@setOnClickListener
                 }
-                var acc = GoogleSignIn.getLastSignedInAccount(requireContext()).account
+                var acc = GoogleSignIn.getLastSignedInAccount(requireContext())?.account
                 model.uploadData(UserProfileData(fullName = fullName.toString(),
                     location = location.toString(),
                     description.toString(),

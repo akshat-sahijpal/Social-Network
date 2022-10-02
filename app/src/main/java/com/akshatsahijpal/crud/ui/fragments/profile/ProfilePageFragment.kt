@@ -32,15 +32,15 @@ class ProfilePageFragment : Fragment() {
         var pager = _binding.viewPagerForProfile
         var account = GoogleSignIn.getLastSignedInAccount(requireContext())
         _binding.apply {
-            Picasso.get().load(account.photoUrl).into(profilePicture)
-            if(account.photoUrl==null){
+            Picasso.get().load(account?.photoUrl).into(profilePicture)
+            if(account?.photoUrl==null){
                 Picasso.get().load(DefaultProfilePhoto).into(profilePicture)
             }
-            profileNameProfileScreen.text = account.displayName
-            profileUserNameProfileScreen.text = "@${account.familyName}"
-            locationOnProfile.text = account.email
+            profileNameProfileScreen.text = account?.displayName
+            profileUserNameProfileScreen.text = "@${account?.familyName}"
+            locationOnProfile.text = account?.email
             profileUserDescriptionProfileScreen.text =
-                "Hey folks, Im ${account.displayName} my friends call me ${account.familyName}. You can contact me via mail on ${account.email}"
+                "Hey folks, Im ${account?.displayName} my friends call me ${account?.familyName}. You can contact me via mail on ${account?.email}"
         }
         pager.adapter = TabAdapter(parentFragmentManager, lifecycle)
         TabLayoutMediator(_binding.tabLayoutForProfile, pager) { tab, position ->
