@@ -31,8 +31,9 @@ class CommentListAdapter :
             return oldItem.commentTime == newItem.commentTime
         }
 
+        //hashCode to compare the hash value of the items
         override fun areContentsTheSame(oldItem: CommentData, newItem: CommentData): Boolean {
-            return oldItem.commentTime == newItem.commentTime
+            return oldItem.hashCode() == newItem.hashCode()
         }
     }
 

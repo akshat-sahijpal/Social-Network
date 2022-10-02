@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -54,9 +53,13 @@ class HomeFeedFragment : Fragment() {
         val account = GoogleSignIn.getLastSignedInAccount(requireContext())
         navController = Navigation.findNavController(view)
         _binding.apply {
-            Picasso.get().load(account.photoUrl).into(profilePicture)
-            if (account.photoUrl == null) {
-                Picasso.get().load(Constants.DefaultProfilePhoto).into(profilePicture)
+            if (account != null) {
+                Picasso.get().load(account.photoUrl).into(profilePicture)
+            }
+            if (account != null) {
+                if (account.photoUrl == null) {
+                    Picasso.get().load(Constants.DefaultProfilePhoto).into(profilePicture)
+                }
             }
             profilePicture.setOnClickListener {
                 navController.navigate(R.id.action_homeFeedFragment_to_profilePageFragment)
