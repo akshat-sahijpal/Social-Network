@@ -1,32 +1,24 @@
 package com.akshatsahijpal.crud.adapter.comment
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.akshatsahijpal.crud.R
 import com.akshatsahijpal.crud.data.CommentData
-import com.akshatsahijpal.crud.databinding.CommentArchitectureBinding
 import com.akshatsahijpal.crud.util.Constants
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.comment_architecture.view.*
 
 class CommentListAdapter :
-    ListAdapter<CommentData, CommentListAdapter.CommentViewViewHolder>(Comparator) {
-    inner class CommentViewViewHolder(var commentView: CommentArchitectureBinding) :
-        RecyclerView.ViewHolder(commentView.root) {
-        fun bind(comment: CommentData) {
-            commentView.apply {
-                Picasso.get().load(comment.profilePicURL ?: Constants.DefaultProfilePhoto)
-                    .into(profilePicture)
-                profileName.text = comment.profileUserName
-                profileUserName.text = comment.profileUserName
-                mainCommentText.text = comment.mainCommentContent
-                uploadTime.text = comment.commentTime
-            }
-        }
-    }
+    RecyclerView.Adapter<CommentListAdapter.CommentViewViewHolder>() {
 
-    object Comparator : DiffUtil.ItemCallback<CommentData>() {
+    inner class CommentViewViewHolder(itemView: View) :
+        RecyclerView.ViewHolder(itemView)
+
+    val comparator = object: DiffUtil.ItemCallback<CommentData>() {
         override fun areItemsTheSame(oldItem: CommentData, newItem: CommentData): Boolean {
             return oldItem.commentTime == newItem.commentTime
         }
@@ -36,14 +28,30 @@ class CommentListAdapter :
             return oldItem.hashCode() == newItem.hashCode()
         }
     }
+    val differ= AsyncListDiffer(this, comparator)
+
+    fun submitList(list:List<CommentData>)= differ.submitList(list)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommentViewViewHolder {
         val view =
-            CommentArchitectureBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.comment_architecture,parent, false)
         return CommentViewViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: CommentViewViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        val comment= differ.currentList[position]
+        holder.itemView.apply {
+            Picasso.get().load(comment.profilePicURL ?: Constants.DefaultProfilePhoto)
+                .into(profilePicture)
+            profileName.text = comment.profileUserName
+            profileUserName.text = comment.profileUserName
+            mainCommentText.text = comment.mainCommentContent
+            uploadTime.text = comment.commentTime
+        }
+    }
+
+    override fun getItemCount(): Int {
+        return differ.currentList.size
     }
 }
+

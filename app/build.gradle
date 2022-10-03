@@ -5,6 +5,8 @@ plugins {
     id 'dagger.hilt.android.plugin'
     id 'com.google.gms.google-services'
     id 'androidx.navigation.safeargs'
+    id 'kotlin-android-extensions'
+
 }
 android {
     compileSdk 32
@@ -18,7 +20,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildFeatures {
-        viewBinding true
+        viewBinding= true
     }
     buildTypes {
         release {
