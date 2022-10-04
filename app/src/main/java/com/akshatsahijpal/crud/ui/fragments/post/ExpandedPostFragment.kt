@@ -55,7 +55,7 @@ class ExpandedPostFragment : Fragment() {
                 if (data.postProfilePicture == null) {
                     Picasso.get().load(Constants.DefaultProfilePhoto).into(mainScope.profilePicture)
                 }
-                val adapter = CommentListAdapter()
+                val cmntadapter = CommentListAdapter()
                 commentScope.CommentButtonForPost.setOnClickListener {
                     if (!commentScope.mainCommentContentForThePost.text.equals(" ")) {
                         val account = GoogleSignIn.getLastSignedInAccount(requireContext())
@@ -69,17 +69,19 @@ class ExpandedPostFragment : Fragment() {
                         model.listenCommentData().observe(viewLifecycleOwner) {
                             model.updatePostWithCommentRef(it, args.uid)
                         }
-                        adapter.notifyDataSetChanged()
+                        cmntadapter.notifyDataSetChanged()
                         commentScope.mainCommentContentForThePost.setText("")
                     }
                 }
                 model.getCommentIDs(args.uid)
                 model.watchCommentIDs().observe(viewLifecycleOwner) { listOfData ->
-                    adapter.submitList(listOfData)
+                    cmntadapter.submitList(listOfData)
                 }
-                CommentRecyclerView.adapter = adapter
-                CommentRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-                CommentRecyclerView.isNestedScrollingEnabled = false
+                CommentRecyclerView.adapter = cmntadapter
+                CommentRecyclerView.apply {
+                    layoutManager = LinearLayoutManager(requireContext())
+                    isNestedScrollingEnabled = false
+                }
             }
         }
     }

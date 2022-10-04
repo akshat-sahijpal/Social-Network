@@ -33,6 +33,9 @@
         <entry key="..\:/Projects/AndroidProjects/MyCrud/app/src/main/res/layout/post_architecture.xml" value="0.22447916666666667" />
         <entry key="..\:/Projects/AndroidProjects/MyCrud/app/src/main/res/layout/post_creation_fragment.xml" value="0.1721014492753623" />
         <entry key="..\:/Projects/AndroidProjects/jetpack/Social-Network/app/src/main/res/layout/fragment_profile_page.xml" value="0.22447916666666667" />
+        <entry key="app/src/main/res/layout/comment_architecture.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/comment_layout.xml" value="0.1921875" />
+        <entry key="app/src/main/res/layout/expanded_post_fragment.xml" value="0.16327433628318583" />
       </map>
     </option>
   </component>
