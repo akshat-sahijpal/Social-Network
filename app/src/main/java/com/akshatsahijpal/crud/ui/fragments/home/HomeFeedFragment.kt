@@ -75,6 +75,7 @@ class HomeFeedFragment : Fragment() {
             })
             mainFeedRecycler.setHasFixedSize(true)
             mainFeedRecycler.adapter = adapter
+
             _binding.shimmerFrameLayout.isVisible = false
             postRedirButton.setOnClickListener {
                 navController.navigate(R.id.action_homeFeedFragment_to_postCreationFragment)
