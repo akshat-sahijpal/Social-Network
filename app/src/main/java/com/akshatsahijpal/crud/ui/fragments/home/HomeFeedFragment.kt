@@ -79,6 +79,7 @@ class HomeFeedFragment : Fragment() {
 
 
 
+
             _binding.shimmerFrameLayout.isVisible = false
             postRedirButton.setOnClickListener {
                 navController.navigate(R.id.action_homeFeedFragment_to_postCreationFragment)
