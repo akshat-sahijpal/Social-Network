@@ -36,6 +36,7 @@
         <entry key="app/src/main/res/layout/comment_architecture.xml" value="0.2" />
         <entry key="app/src/main/res/layout/comment_layout.xml" value="0.1921875" />
         <entry key="app/src/main/res/layout/expanded_post_fragment.xml" value="0.16327433628318583" />
+        <entry key="app/src/main/res/layout/fragment_home_feed.xml" value="0.2526041666666667" />
       </map>
     </option>
   </component>
