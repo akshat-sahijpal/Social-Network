@@ -95,5 +95,5 @@ class HomeFeedFragment : Fragment() {
         }
     }
 
-    suspend fun makeReq() = db.collection(Constants.POST).get().await().documents
+//    suspend fun makeReq() = db.collection(Constants.POST).get().await().documents
 }
