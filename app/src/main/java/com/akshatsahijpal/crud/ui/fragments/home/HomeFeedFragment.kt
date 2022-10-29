@@ -71,7 +71,6 @@ class HomeFeedFragment : Fragment() {
                    var navi = HomeFeedFragmentDirections.actionHomeFeedFragmentToExpandedPostFragment(clickedID)
                     findNavController().navigate(navi)
                 }
-                Toast.makeText(requireContext(), "Clicked:$clickedID", Toast.LENGTH_LONG).show()
             })
             mainFeedRecycler.setHasFixedSize(true)
             mainFeedRecycler.adapter = adapter
