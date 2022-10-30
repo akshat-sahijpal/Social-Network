@@ -21,6 +21,7 @@ import com.akshatsahijpal.crud.adapter.home.PagingAdapter
 import com.akshatsahijpal.crud.databinding.FragmentHomeFeedBinding
 import com.akshatsahijpal.crud.util.Constants
 import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.squareup.picasso.Picasso
@@ -98,5 +99,5 @@ class HomeFeedFragment : Fragment() {
         }
     }
 
-    suspend fun makeReq() = db.collection(Constants.POST).get().await().documents
+    suspend fun makeReq(): MutableList<DocumentSnapshot> = db.collection(Constants.POST).get().await().documents
 }
