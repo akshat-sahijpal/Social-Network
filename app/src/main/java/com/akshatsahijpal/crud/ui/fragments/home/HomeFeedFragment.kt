@@ -86,7 +86,6 @@ class HomeFeedFragment : Fragment() {
                     _binding.shimmerFrameLayout.startShimmer()
                 }
                 else _binding.shimmerFrameLayout.stopShimmer();_binding.shimmerFrameLayout.isVisible = false
-
                 _binding.mainFeedRecycler.isVisible = it.source.refresh is LoadState.NotLoading
 
             }
