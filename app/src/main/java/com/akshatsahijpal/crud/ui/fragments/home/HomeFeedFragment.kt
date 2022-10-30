@@ -89,8 +89,7 @@ class HomeFeedFragment : Fragment() {
                 _binding.mainFeedRecycler.isVisible = it.source.refresh is LoadState.NotLoading
 
             }
-            model.binder.observe(viewLifecycleOwner) {
-                it.observe(viewLifecycleOwner) { dt ->
+            model.binder.observe(viewLifecycleOwner) { it.observe(viewLifecycleOwner) { dt ->
                     adapter.submitData(viewLifecycleOwner.lifecycle, dt)
                 }
             }
