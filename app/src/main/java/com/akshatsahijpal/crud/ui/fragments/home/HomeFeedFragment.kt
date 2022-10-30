@@ -73,8 +73,8 @@ class HomeFeedFragment : Fragment() {
                 }
                 Toast.makeText(requireContext(), "Clicked:$clickedID", Toast.LENGTH_LONG).show()
             })
-            mainFeedRecycler.setHasFixedSize(true)
             mainFeedRecycler.adapter = adapter
+            mainFeedRecycler.setHasFixedSize(true)
             _binding.shimmerFrameLayout.isVisible = false
             postRedirButton.setOnClickListener {
                 navController.navigate(R.id.action_homeFeedFragment_to_postCreationFragment)
