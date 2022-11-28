@@ -21,6 +21,7 @@ import com.akshatsahijpal.crud.adapter.home.PagingAdapter
 import com.akshatsahijpal.crud.databinding.FragmentHomeFeedBinding
 import com.akshatsahijpal.crud.util.Constants
 import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.squareup.picasso.Picasso
@@ -73,8 +74,8 @@ class HomeFeedFragment : Fragment() {
                 }
                 Toast.makeText(requireContext(), "Clicked:$clickedID", Toast.LENGTH_LONG).show()
             })
-            mainFeedRecycler.setHasFixedSize(true)
             mainFeedRecycler.adapter = adapter
+            mainFeedRecycler.setHasFixedSize(true)
             _binding.shimmerFrameLayout.isVisible = false
             postRedirButton.setOnClickListener {
                 navController.navigate(R.id.action_homeFeedFragment_to_postCreationFragment)
@@ -83,20 +84,17 @@ class HomeFeedFragment : Fragment() {
                 if (it.source.refresh is LoadState.Loading) {
                     _binding.shimmerFrameLayout.isVisible = true
                     _binding.shimmerFrameLayout.startShimmer()
-                } else {
-                    _binding.shimmerFrameLayout.stopShimmer()
-                    _binding.shimmerFrameLayout.isVisible = false
                 }
+                else _binding.shimmerFrameLayout.stopShimmer();_binding.shimmerFrameLayout.isVisible = false
                 _binding.mainFeedRecycler.isVisible = it.source.refresh is LoadState.NotLoading
 
             }
-            model.binder.observe(viewLifecycleOwner) {
-                it.observe(viewLifecycleOwner) { dt ->
+            model.binder.observe(viewLifecycleOwner) { it.observe(viewLifecycleOwner) { dt ->
                     adapter.submitData(viewLifecycleOwner.lifecycle, dt)
                 }
             }
         }
     }
 
-    suspend fun makeReq() = db.collection(Constants.POST).get().await().documents
+    suspend fun makeReq(): MutableList<DocumentSnapshot> = db.collection(Constants.POST).get().await().documents
 }
