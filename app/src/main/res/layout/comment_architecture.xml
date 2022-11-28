@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/surface_color"
+    android:background="@color/colorGrey"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 <LinearLayout
@@ -25,6 +25,7 @@
     <androidx.cardview.widget.CardView
         android:elevation="20dp"
         android:layout_marginStart="10dp"
+        android:layout_marginEnd="20sp"
         android:backgroundTint="@color/card_color"
         android:layout_width="match_parent"
         app:cardCornerRadius="20dp"
@@ -35,7 +36,7 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:layout_marginStart="4dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="5dp"
             android:orientation="vertical">
 
             <TextView
@@ -46,7 +47,7 @@
                 android:padding="2dp"
                 android:text="Profile Name"
                 android:textColor="@color/main_title"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -68,14 +69,14 @@
                 android:maxLines="1"
                 android:text="@string/_1h"
                 android:textColor="@color/login_ui"
-                android:textSize="16sp" />
+                android:textSize="13sp" />
 
             <TextView
                 android:id="@+id/mainCommentText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
-                android:textSize="20dp"
+                 android:layout_marginTop="14dp"
+                android:textSize="12sp"
                 android:text="@string/dwe"
                 android:textColor="@color/white" />
         </LinearLayout>

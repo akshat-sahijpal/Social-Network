@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".ui.fragments.post.PostCreationFragment">
 
@@ -29,8 +29,8 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:layout_gravity="start|center"
+                android:background="@color/white"
                 android:layout_marginStart="25dp"
-                android:background="@color/black"
                 android:src="@drawable/ic_baseline_close_24" />
             <ProgressBar
                 android:layout_width="40dp"
@@ -80,17 +80,17 @@
                     android:id="@+id/imageForPostFromCamera"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
-                    android:background="@color/black"
+                    android:background="@color/white"
                     android:layout_gravity="center|center_horizontal"
                     android:layout_marginTop="50dp"
-                    android:src="@drawable/ic_baseline_add_a_photo_24" />
+                    android:src="@drawable/ic_baseline_camera_24" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|center_horizontal"
                     android:fontFamily="@font/amaranth_bold"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:text="Take Photo"
                     android:textSize="15dp" />
 
@@ -98,10 +98,10 @@
                     android:id="@+id/imageForPostFromGallery"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
-                    android:background="@color/black"
+                    android:background="@color/white"
                     android:layout_gravity="center|center_horizontal"
                     android:layout_marginTop="50dp"
-                    android:src="@drawable/ic_baseline_photo_album_24" />
+                    android:src="@drawable/ic_baseline_attach_file_24" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -109,7 +109,7 @@
                     android:layout_gravity="center|center_horizontal"
                     android:fontFamily="@font/amaranth_bold"
                     android:text="Gallery"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="15dp" />
 
                 <ImageButton

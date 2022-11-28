@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "913224862012",
-    "project_id": "crud-backend-5f69a",
-    "storage_bucket": "crud-backend-5f69a.appspot.com"
+    "project_number": "159031485861",
+    "project_id": "final-sem-project-fc71a",
+    "storage_bucket": "final-sem-project-fc71a.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:913224862012:android:419a4c521e7ef720b2f639",
+        "mobilesdk_app_id": "1:159031485861:android:7aded40aefc28fcd27344c",
         "android_client_info": {
           "package_name": "com.akshatsahijpal.crud"
         }
       },
       "oauth_client": [
         {
-          "client_id": "913224862012-pikbgn6rgfmqdin8srgb77to76hvd9hf.apps.googleusercontent.com",
+          "client_id": "159031485861-47alvcvij4ven7nj0taasmb6jk4ovnev.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC9b2Jby7JiQlzEjKo4JLZCcDfhMA6xpS8"
+          "current_key": "AIzaSyBCS-kg-fYUlyiCGOENd4F5HeuNF6ZN59Q"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "913224862012-pikbgn6rgfmqdin8srgb77to76hvd9hf.apps.googleusercontent.com",
+              "client_id": "159031485861-47alvcvij4ven7nj0taasmb6jk4ovnev.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

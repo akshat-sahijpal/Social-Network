@@ -1,39 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@color/card_color"
+    android:background="@color/white"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal">
     <de.hdodenhof.circleimageview.CircleImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/profilePictureForComment"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_margin="10dp"
         android:src="@drawable/default_profile_picture"
         app:civ_border_color="#FF000000"
         app:civ_border_width="2dp" />
     <EditText
         android:layout_width="0dp"
-        android:layout_margin="10dp"
+        android:layout_margin="8dp"
         android:id="@+id/mainCommentContentForThePost"
         android:layout_height="wrap_content"
-        android:textColorHint="@color/gray_comment"
-        android:textColor="@color/white"
+        android:textColorHint="@color/black"
+        android:textSize="12sp"
+        android:textColor="@color/black"
         android:fontFamily="@font/amiko_semibold"
         android:hint="Comment..."
-        android:layout_weight="2" />
+        android:layout_weight="1" />
 
-    <com.google.android.material.button.MaterialButton
-        android:layout_width="wrap_content"
-        app:cornerRadius="20dp"
+    <ImageView
         android:id="@+id/CommentButtonForPost"
-        android:backgroundTint="@color/black"
-        android:layout_height="40dp"
-        android:fontFamily="@font/amiko_semibold"
-        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
         android:layout_margin="10dp"
-        android:textAllCaps="false"
-        android:text="Comment" />
+        android:src="@drawable/ic_baseline_backup_24"
+        />
 </LinearLayout>
