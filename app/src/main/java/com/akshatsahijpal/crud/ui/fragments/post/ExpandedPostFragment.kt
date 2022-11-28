@@ -1,10 +1,12 @@
 package com.akshatsahijpal.crud.ui.fragments.post
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -12,6 +14,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.akshatsahijpal.crud.adapter.comment.CommentListAdapter
 import com.akshatsahijpal.crud.data.CommentData
+import com.akshatsahijpal.crud.databinding.CommentLayoutBinding
 import com.akshatsahijpal.crud.databinding.ExpandedPostFragmentBinding
 import com.akshatsahijpal.crud.util.Constants
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -25,6 +28,7 @@ class ExpandedPostFragment : Fragment() {
 
     private val model: ExpandedPostViewModel by viewModels()
     private lateinit var _binding: ExpandedPostFragmentBinding
+    private lateinit var commentAdapter: CommentListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,6 +42,10 @@ class ExpandedPostFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         model.checkForDataWithUid(args.uid)
+        setUpBaseUI()
+    }
+
+    private fun setUpBaseUI() {
         model.listenData().observe(viewLifecycleOwner) { data ->
             _binding.apply {
                 mainScope.profileUserName.text = data!!.postUserName
@@ -55,34 +63,54 @@ class ExpandedPostFragment : Fragment() {
                 if (data.postProfilePicture == null) {
                     Picasso.get().load(Constants.DefaultProfilePhoto).into(mainScope.profilePicture)
                 }
-                val cmntadapter = CommentListAdapter()
-                commentScope.CommentButtonForPost.setOnClickListener {
-                    if (!commentScope.mainCommentContentForThePost.text.equals(" ")) {
-                        val account = GoogleSignIn.getLastSignedInAccount(requireContext())
-                        val data = CommentData(
-                            account?.photoUrl.toString(),
-                            Calendar.getInstance().time.toString(),
-                            account?.displayName,
-                            commentScope.mainCommentContentForThePost.text.toString()
-                        )
-                        model.commentUploader(data)
-                        model.listenCommentData().observe(viewLifecycleOwner) {
-                            model.updatePostWithCommentRef(it, args.uid)
-                        }
-                        cmntadapter.notifyDataSetChanged()
-                        commentScope.mainCommentContentForThePost.setText("")
-                    }
-                }
-                model.getCommentIDs(args.uid)
-                model.watchCommentIDs().observe(viewLifecycleOwner) { listOfData ->
-                    cmntadapter.submitList(listOfData)
-                }
-                CommentRecyclerView.adapter = cmntadapter
+
+
+                commentAdapter = CommentListAdapter()
+                CommentRecyclerView.adapter = commentAdapter
                 CommentRecyclerView.apply {
                     layoutManager = LinearLayoutManager(requireContext())
                     isNestedScrollingEnabled = false
                 }
+                commentProcessing()
+
+                commentThreadUploader(commentScope)
+
             }
+        }
+    }
+    private fun commentThreadUploader (commentScope:CommentLayoutBinding) {
+        commentScope.CommentButtonForPost.setOnClickListener {
+            if (!commentScope.mainCommentContentForThePost.text.equals(" ")) {
+                val account = GoogleSignIn.getLastSignedInAccount(requireContext())
+                val data = CommentData(
+                    account?.photoUrl.toString(),
+                    Calendar.getInstance().time.toString(),
+                    account?.displayName,
+                    commentScope.mainCommentContentForThePost.text.toString()
+                )
+                model.commentUploader(data)
+                model.listenCommentData().observe(viewLifecycleOwner) {
+                    model.updatePostWithCommentRef(it, args.uid)
+                    commentProcessing()
+                }
+                hideKeyboard()
+                commentScope.mainCommentContentForThePost.setText("")
+                //commentProcessing()
+            }
+        }
+    }
+
+    private fun commentProcessing () {
+        model.getCommentIDs(args.uid)
+        model.watchCommentIDs().observe(viewLifecycleOwner) { listOfData ->
+            commentAdapter.submitList(listOfData)
+        }
+    }
+
+    private fun hideKeyboard() {
+        requireActivity().currentFocus?.let { view ->
+            val imm = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+            imm?.hideSoftInputFromWindow(view.windowToken, 0)
         }
     }
 }
