@@ -54,11 +54,9 @@ class ExpandedPostFragment : Fragment() {
                 mainScope.mainPostParagraph.text = data.postMainParagraph
                 Picasso.get().load(data.postProfilePicture).into(mainScope.profilePicture)
                 val phot = data.postAddPhoto
-                Log.d("Displaying this image->", "${phot}")
                 if (phot != null) {
                     mainScope.PostImage.isVisible = true
                     Picasso.get().load(phot.trim()).into(mainScope.PostImage)
-                    Log.d("Displaying this image->", "${data.postAddPhoto}")
                 }
                 if (data.postProfilePicture == null) {
                     Picasso.get().load(Constants.DefaultProfilePhoto).into(mainScope.profilePicture)
@@ -72,9 +70,8 @@ class ExpandedPostFragment : Fragment() {
                     isNestedScrollingEnabled = false
                 }
                 commentProcessing()
-
+                Picasso.get().load(GoogleSignIn.getLastSignedInAccount(requireContext())?.photoUrl).into(commentScope.profilePictureForComment)
                 commentThreadUploader(commentScope)
-
             }
         }
     }
@@ -95,7 +92,6 @@ class ExpandedPostFragment : Fragment() {
                 }
                 hideKeyboard()
                 commentScope.mainCommentContentForThePost.setText("")
-                //commentProcessing()
             }
         }
     }
