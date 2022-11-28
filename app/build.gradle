@@ -102,6 +102,8 @@ dependencies {
     implementation "androidx.camera:camera-view:1.1.0"
     implementation "android.arch.navigation:navigation-fragment-ktx:1.0.0"
 
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.17'
+
 }
 kapt {
     correctErrorTypes true

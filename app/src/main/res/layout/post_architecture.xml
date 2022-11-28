@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:backgroundTint="@color/black"
+    android:backgroundTint="@color/white"
     android:layout_height="wrap_content"
     android:orientation="vertical">
     <LinearLayout
@@ -12,7 +12,7 @@
         android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="5dp"
         android:layout_marginTop="10dp"
@@ -23,8 +23,8 @@
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/profilePicture"
-            android:layout_width="96dp"
-            android:layout_height="80dp"
+            android:layout_width="56dp"
+            android:layout_height="50dp"
             android:padding="2dp"
             android:layout_marginStart="13dp"
             android:src="@drawable/default_profile_picture"
@@ -33,7 +33,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="vertical"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 <LinearLayout
     android:layout_width="wrap_content"
     android:orientation="vertical"
@@ -45,29 +45,29 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/amaranth_bold"
             android:padding="2dp"
-            android:text="Profile Name"
+            android:text="Akshat Sahijpal"
             android:textColor="@color/main_title"
-            android:textSize="22sp"
+            android:textSize="17sp"
             android:textStyle="bold" />
     <TextView
         android:id="@+id/profileName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ellipsize="marquee"
-        android:textColor="@color/login_ui"
+        android:textColor="@color/black"
         android:maxLines="1"
-        android:text="1h"
-        android:textSize="15sp" />
+        android:text="1 hour ago"
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/uploadTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ellipsize="marquee"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:maxLines="1"
         android:text="1h"
-        android:textSize="13sp" />
+        android:textSize="12sp" />
 
 </LinearLayout>
         </LinearLayout>
@@ -85,11 +85,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:fontFamily="@font/amiko_semibold"
             android:padding="10dp"
             android:text="@string/five_centuries"
-             android:textSize="18sp" />
+             android:textSize="12sp" />
         <ImageView
             android:id="@+id/PostImage"
             android:layout_width="350dp"

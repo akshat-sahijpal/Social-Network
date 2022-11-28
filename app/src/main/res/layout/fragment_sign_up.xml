@@ -6,46 +6,56 @@
     android:layout_height="match_parent"
     tools:context="com.akshatsahijpal.crud.ui.fragments.auth.SignUpFragment">
 
-    <ImageView
+    <pl.droidsonroids.gif.GifImageView
         android:id="@+id/imageView"
-        android:layout_width="114dp"
-        android:layout_height="102dp"
-        android:layout_marginTop="116dp"
-        android:src="@drawable/key"
+        android:layout_width="70dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="70dp"
+        android:src="@drawable/lock"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:fontFamily="@font/amiko_semibold"
-        android:text="Sign Up"
-        android:textSize="45sp"
+        android:fontFamily="@font/amaranth_bold"
+        android:text="@string/sign_up"
+        android:textColor="@color/black"
+        android:textSize="30sp"
         android:textStyle="bold"
-        android:textColor="@color/login_ui"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="75dp"
+        android:src="@drawable/online_security"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/googleSignUpButton"
         style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="187dp"
-        android:layout_height="75dp"
-        android:layout_marginBottom="175dp"
-        android:backgroundTint="@color/login_ui"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="125dp"
+        android:backgroundTint="@color/black"
         android:elevation="1sp"
-        android:text="@string/google_auth"
+        android:text="@string/continue12"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         app:cornerRadius="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

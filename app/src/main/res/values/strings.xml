@@ -11,4 +11,6 @@
     <string name="google_auth">Google Auth</string>
     <string name="username">UserName</string>
     <string name="write_your_thoughts">Write your thoughts</string>
+    <string name="sign_up">Authenticate Yourself</string>
+    <string name="continue12">Continue</string>
 </resources>
