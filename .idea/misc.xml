@@ -37,8 +37,8 @@
         <entry key="app/src/main/res/layout/comment_architecture.xml" value="0.2" />
         <entry key="app/src/main/res/layout/comment_layout.xml" value="0.1921875" />
         <entry key="app/src/main/res/layout/expanded_post_fragment.xml" value="0.2645935624659029" />
-        <entry key="app/src/main/res/layout/fragment_home_feed.xml" value="0.2526041666666667" />
-        <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.2526041666666667" />
+        <entry key="app/src/main/res/layout/fragment_home_feed.xml" value="0.26979281092319746" />
+        <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.1658106486002604" />
         <entry key="app/src/main/res/layout/post_architecture.xml" value="0.2526041666666667" />
         <entry key="app/src/main/res/layout/post_creation_fragment.xml" value="0.2526041666666667" />
       </map>

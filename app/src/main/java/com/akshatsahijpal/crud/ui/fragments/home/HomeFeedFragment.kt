@@ -76,16 +76,12 @@ class HomeFeedFragment : Fragment() {
             })
             mainFeedRecycler.adapter = adapter
             mainFeedRecycler.setHasFixedSize(true)
-            _binding.shimmerFrameLayout.isVisible = false
             postRedirButton.setOnClickListener {
                 navController.navigate(R.id.action_homeFeedFragment_to_postCreationFragment)
             }
             adapter.addLoadStateListener {
                 if (it.source.refresh is LoadState.Loading) {
-                    _binding.shimmerFrameLayout.isVisible = true
-                    _binding.shimmerFrameLayout.startShimmer()
                 }
-                else _binding.shimmerFrameLayout.stopShimmer();_binding.shimmerFrameLayout.isVisible = false
                 _binding.mainFeedRecycler.isVisible = it.source.refresh is LoadState.NotLoading
 
             }

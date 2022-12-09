@@ -40,15 +40,15 @@ class PagingAdapter constructor(private var itemClk: CheckClickerForPost) :
             _bind.root.setOnClickListener { clickListener(post) }
             _bind.let {
                 it.profileUserName.text = post.postUserName
-                it.profileName.text = "@${post.postProfileName}"
+                //it.profileName.text = "@${post.postProfileName}"
                 it.uploadTime.text = post.postUploadTime
                 it.mainPostParagraph.text = post.postMainParagraph
                 Picasso.get().load(post.postProfilePicture).into(it.profilePicture)
                 val phot = post.postAddPhoto
                 Log.d("Displaying this image->", "${phot}")
                 if (phot != null) {
-                    it.PostImage.isVisible = true
-                    Picasso.get().load(phot.trim()).into(it.PostImage)
+                   // it.PostImage.isVisible = true
+                    //Picasso.get().load(phot.trim()).into(it.PostImage)
                     Log.d("Displaying this image->", "${post.postAddPhoto}")
                     //    Glide.with(_bind.root).load(post.postAddPhoto).centerCrop().into(it.PostImage)
                 }
