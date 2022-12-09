@@ -55,7 +55,7 @@ class HomeFeedFragment : Fragment() {
         navController = Navigation.findNavController(view)
         _binding.apply {
             if (account != null) {
-                Picasso.get().load(account.photoUrl).into(profilePicture)
+             //   Picasso.get().load(account.photoUrl).into(profilePicture)
             }
             if (account != null) {
                 if (account.photoUrl == null) {
