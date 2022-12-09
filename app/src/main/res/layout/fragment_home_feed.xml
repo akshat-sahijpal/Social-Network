@@ -10,7 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#F9F6EE"
+        android:background="@color/white"
         tools:context=".ui.fragments.home.HomeFeedFragment">
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -52,7 +52,7 @@
                     android:fontFamily="@font/amaranth_bold" />
 
                 <ImageView
-                    android:id="@+id/postRedirButton"
+                    android:id="@+id/postRedirButton7"
                     android:layout_width="30dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
@@ -103,7 +103,7 @@
                 app:cardElevation="5dp">
 
                 <pl.droidsonroids.gif.GifImageView
-                    android:id="@+id/search"
+                    android:id="@+id/postRedirButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
