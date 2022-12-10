@@ -2,6 +2,7 @@ package com.akshatsahijpal.crud.adapter.home
 
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
 import androidx.core.view.isVisible
@@ -14,6 +15,7 @@ import com.akshatsahijpal.crud.R
 import com.akshatsahijpal.crud.data.PostFeedData
 import com.akshatsahijpal.crud.databinding.PostArchitectureBinding
 import com.akshatsahijpal.crud.util.Constants
+import com.bumptech.glide.Glide
 import com.squareup.picasso.Picasso
 
 class PagingAdapter constructor(private var itemClk: CheckClickerForPost) :
@@ -41,16 +43,16 @@ class PagingAdapter constructor(private var itemClk: CheckClickerForPost) :
             _bind.let {
                 it.profileUserName.text = post.postUserName
                 //it.profileName.text = "@${post.postProfileName}"
-                it.uploadTime.text = post.postUploadTime
+                it.uploadTime.text = post.postUploadTime?.subSequence(startIndex = 0, endIndex = 16)
                 it.mainPostParagraph.text = post.postMainParagraph
                 Picasso.get().load(post.postProfilePicture).into(it.profilePicture)
-                val phot = post.postAddPhoto
-                Log.d("Displaying this image->", "${phot}")
-                if (phot != null) {
-                   // it.PostImage.isVisible = true
-                    //Picasso.get().load(phot.trim()).into(it.PostImage)
+                val postPicture = post.postAddPhoto
+                Log.d("Displaying this image->", "${postPicture}")
+                if (postPicture != null) {
+                    it.iCv.visibility = View.VISIBLE
+                    Picasso.get().load(postPicture.trim()).into(it.PostImage)
                     Log.d("Displaying this image->", "${post.postAddPhoto}")
-                    //    Glide.with(_bind.root).load(post.postAddPhoto).centerCrop().into(it.PostImage)
+                    Glide.with(_bind.root).load(post.postAddPhoto).centerCrop().into(it.PostImage)
                 }
                 if (post.postProfilePicture == null) {
                     Picasso.get().load(Constants.DefaultProfilePhoto).into(it.profilePicture)
