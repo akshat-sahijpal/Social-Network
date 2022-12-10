@@ -37,7 +37,7 @@ class QaAdapter :
         fun connect(post: PostFeedData) {
             _bind.let {
                 it.profileName.text = post.postProfileName
-                it.uploadTime.text = post.postUploadTime
+                it.uploadTime.text = post.postUploadTime?.subSequence(0, 16)
                 it.mainPostParagraph.text = post.postMainParagraph
                 val postPicture = post.postAddPhoto
                 Log.d("Displaying this image->", "${postPicture}")

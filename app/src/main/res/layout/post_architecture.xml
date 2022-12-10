@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="3dp"
+    android:layout_margin="5dp"
     android:elevation="19dp"
-    app:cardCornerRadius="3dp">
+    app:cardCornerRadius="5dp">
 
     <LinearLayout
         android:id="@+id/layout"
