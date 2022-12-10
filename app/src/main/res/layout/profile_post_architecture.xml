@@ -2,8 +2,10 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:backgroundTint="@color/black"
     android:layout_height="wrap_content"
+    android:layout_margin="3dp"
+    android:elevation="19dp"
+    app:cardCornerRadius="3dp"
     android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,17 +13,18 @@
         android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/profilePicture"
-                android:layout_width="96dp"
-                android:layout_height="80dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:padding="2dp"
                 android:layout_marginStart="13dp"
                 android:src="@drawable/default_profile_picture"
@@ -40,7 +43,7 @@
                     android:padding="2dp"
                     android:text="Profile Name"
                     android:textColor="@color/main_title"
-                    android:textSize="22sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -51,7 +54,7 @@
                     android:maxLines="1"
                     android:textColor="@color/login_ui"
                     android:text="1h"
-                    android:textSize="14sp" />
+                    android:textSize="12sp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -68,17 +71,20 @@
                 android:layout_marginEnd="20dp"
                 android:fontFamily="@font/acme"
                 android:padding="10dp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:text="@string/five_centuries"
-                android:textSize="22sp" />
+                android:textSize="14sp" />
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_marginTop="10dp"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="20dp"
-                android:visibility="invisible"
-                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/moIm"
+                android:visibility="gone"
+                android:layout_gravity="start"
+                android:layout_marginStart="29sp"
                 app:cardElevation="5dp"
                 app:strokeColor="@color/black"
                 app:strokeWidth="1dp">
@@ -93,8 +99,4 @@
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
     </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/darker_gray"/>
 </androidx.cardview.widget.CardView>

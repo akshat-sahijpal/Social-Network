@@ -25,9 +25,8 @@
     <androidx.cardview.widget.CardView
         android:elevation="20dp"
         android:layout_marginStart="10dp"
-        app:cardElevation="10dp"
         android:layout_marginEnd="20sp"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="#F5F5F5"
         android:layout_width="match_parent"
         app:cardCornerRadius="20dp"
         android:layout_marginBottom="5dp"
@@ -54,6 +53,7 @@
 
             <TextView
                 android:id="@+id/profileUserName"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="marquee"
@@ -71,7 +71,7 @@
                 android:maxLines="1"
                 android:text="@string/_1h"
                 android:textColor="@color/login_ui"
-                android:textSize="13sp" />
+                android:textSize="9sp" />
 
             <TextView
                 android:id="@+id/mainCommentText"

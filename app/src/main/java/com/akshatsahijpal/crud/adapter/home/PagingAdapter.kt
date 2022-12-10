@@ -53,7 +53,8 @@ class PagingAdapter constructor(private var itemClk: CheckClickerForPost) :
                     Picasso.get().load(postPicture.trim()).into(it.PostImage)
                     Log.d("Displaying this image->", "${post.postAddPhoto}")
                     Glide.with(_bind.root).load(post.postAddPhoto).centerCrop().into(it.PostImage)
-                }
+                }else it.iCv.visibility = View.GONE
+
                 if (post.postProfilePicture == null) {
                     Picasso.get().load(Constants.DefaultProfilePhoto).into(it.profilePicture)
                 }

@@ -46,7 +46,7 @@ class CommentListAdapter :
             profileName.text = comment.profileUserName
             profileUserName.text = comment.profileUserName
             mainCommentText.text = comment.mainCommentContent
-            uploadTime.text = comment.commentTime
+            uploadTime.text = comment.commentTime?.subSequence(0, 16)
         }
     }
 

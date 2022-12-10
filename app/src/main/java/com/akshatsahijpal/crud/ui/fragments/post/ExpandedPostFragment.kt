@@ -50,13 +50,14 @@ class ExpandedPostFragment : Fragment() {
             _binding.apply {
                 mainScope.profileUserName.text = data!!.postUserName
                 //mainScope.profileName.text = "@${data.postProfileName}"
-                mainScope.uploadTime.text = data.postUploadTime
+                mainScope.uploadTime.text = data.postUploadTime?.subSequence(0, 16)
                 mainScope.mainPostParagraph.text = data.postMainParagraph
                 Picasso.get().load(data.postProfilePicture).into(mainScope.profilePicture)
                 val phot = data.postAddPhoto
                 if (phot != null) {
-               //     mainScope.PostImage.isVisible = true
-                 //   Picasso.get().load(phot.trim()).into(mainScope.PostImage)
+                     mainScope.iCv.isVisible = true
+                     mainScope.PostImage.isVisible = true
+                     Picasso.get().load(phot.trim()).into(mainScope.PostImage)
                 }
                 if (data.postProfilePicture == null) {
                     Picasso.get().load(Constants.DefaultProfilePhoto).into(mainScope.profilePicture)

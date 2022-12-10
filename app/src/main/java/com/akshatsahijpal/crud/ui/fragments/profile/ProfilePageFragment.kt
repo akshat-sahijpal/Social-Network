@@ -49,14 +49,6 @@ class ProfilePageFragment : Fragment() {
                     tab.text = "Answers"
                     tab.id = 0
                 }
-                1 -> {
-                    tab.text = "Media"
-                    tab.id = 1
-                }
-                2 -> {
-                    tab.text = "Chats"
-                    tab.id = 2
-                }
             }
         }.attach()
         pager.registerOnPageChangeCallback(object :
@@ -67,16 +59,6 @@ class ProfilePageFragment : Fragment() {
                     0 -> {
                         if (_binding.tabLayoutForProfile.id == 0) {
                             _binding.tabLayoutForProfile[0].alpha = 1.0f
-                        }
-                    }
-                    1 -> {
-                        if (_binding.tabLayoutForProfile.id == 1) {
-                            _binding.tabLayoutForProfile[1].alpha = 1.0f
-                        }
-                    }
-                    2 -> {
-                        if (_binding.tabLayoutForProfile.id == 2) {
-                            _binding.tabLayoutForProfile[2].alpha = 1.0f
                         }
                     }
                 }
