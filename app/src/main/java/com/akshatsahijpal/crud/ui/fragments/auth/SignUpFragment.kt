@@ -35,7 +35,6 @@ class SignUpFragment : Fragment() {
         _binding = FragmentSignUpBinding.inflate(inflater, container, false)
         return _binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
@@ -49,7 +48,6 @@ class SignUpFragment : Fragment() {
             }
         }
     }
-
     private fun signInWithGoogle() {
         var intent = googleClient.signInIntent
         startActivityForResult(intent, REQ)

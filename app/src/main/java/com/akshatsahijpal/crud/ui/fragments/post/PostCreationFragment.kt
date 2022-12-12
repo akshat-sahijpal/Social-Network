@@ -324,6 +324,10 @@ class PostCreationFragment : Fragment() {
                 .setTargetRotation(it.rotation)
                 .build()
         }
-        camera = prov.bindToLifecycle(viewLifecycleOwner, cameraSelector, preview, imageCapture)
+
+
+        try {
+            camera = prov.bindToLifecycle(viewLifecycleOwner, cameraSelector, preview, imageCapture)
+        }catch (exep: IllegalArgumentException){Toast.makeText(context, "Camera won't work with Emulator", Toast.LENGTH_LONG).show()}
     }
 }

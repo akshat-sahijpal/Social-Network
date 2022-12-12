@@ -136,7 +136,7 @@
 
 
                 <ImageView
-                    android:id="@+id/postImgePreview"
+                    android:id="@+id/postImgePreview2"
                     android:layout_width="70dp"
                     android:layout_height="120dp"
                     android:layout_gravity="center_horizontal"
@@ -177,6 +177,16 @@
                     android:layout_height="200dp"
                     android:visibility="gone"
                     android:id="@+id/CameraPreview2323"/>
+                <ImageView
+                    android:id="@+id/postImgePreview"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="40dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/coverpicture"
+                    android:visibility="invisible" />
+
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
